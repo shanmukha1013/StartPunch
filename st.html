@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUNCHSTART AI - Indian Startup Analyzer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+            color: #1e293b;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 30px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #1e293b;
+        }
+
+        .logo {
+            font-size: 2.8rem;
+            font-weight: 900;
+            letter-spacing: -3px;
+            text-transform: uppercase;
+            color: #1e293b;
+            line-height: 1;
+        }
+
+        .logo span {
+            color: #64748b;
+            font-weight: 700;
+        }
+
+        .logo-tagline {
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            color: #64748b;
+            margin-top: 5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 15px;
+            background: white;
+            padding: 10px;
+            border-radius: 50px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-btn {
+            padding: 12px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            background: transparent;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 40px;
+        }
+
+        .nav-btn:hover {
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        .nav-btn.active {
+            background: #1e293b;
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+        }
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 25px 30px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            margin-bottom: 25px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 15px;
+        }
+
+        .card-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e293b;
+            letter-spacing: -1px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #334155;
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 18px;
+            font-size: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #1e293b;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(30, 41, 59, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            background: #1e293b;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            letter-spacing: 0.3px;
+        }
+
+        .btn:hover {
+            background: #0f172a;
+            transform: translateY(-1px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #1e293b;
+            border: 2px solid #e2e8f0;
+        }
+
+        .btn-secondary:hover {
+            background: #f8fafc;
+            border-color: #1e293b;
+            box-shadow: none;
+        }
+
+        .auth-box {
+            max-width: 450px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 32px;
+            padding: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .auth-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1e293b;
+        }
+
+        .auth-subtitle {
+            color: #64748b;
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .analysis-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .analysis-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 3px solid #f1f5f9;
+            padding-bottom: 15px;
+        }
+
+        .analysis-card ul {
+            list-style: none;
+        }
+
+        .analysis-card li {
+            margin-bottom: 15px;
+            padding-left: 28px;
+            position: relative;
+            color: #334155;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .analysis-card li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .metric-badge {
+            background: #f1f5f9;
+            color: #1e293b;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .roadmap-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .phase-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            border-radius: 16px;
+            padding: 20px;
+            border-left: 6px solid #1e293b;
+        }
+
+        .phase-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .phase-duration {
+            color: #64748b;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .phase-duration span {
+            background: #e2e8f0;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .pitch-slides {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .slide-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 15px;
+            border: 1px solid #e2e8f0;
+            min-height: 120px;
+        }
+
+        .slide-number {
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+        }
+
+        .slide-content {
+            font-size: 0.9rem;
+            color: #334155;
+            font-weight: 500;
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .loading-overlay.active {
+            display: flex;
+        }
+
+        .loading-content {
+            text-align: center;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid #f1f5f9;
+            border-top: 4px solid #1e293b;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .idea-feed {
+            display: grid;
+            gap: 20px;
+        }
+
+        .idea-post {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .comment-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #f1f5f9;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .alert {
+            padding: 16px 24px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .alert-success {
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #86efac;
+        }
+
+        .alert-info {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #93c5fd;
+        }
+
+        .alert-error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+
+        .rupee-symbol {
+            font-family: 'Rupee Foradian', 'Inter', sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .analysis-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pitch-slides {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div>
+                <div class="logo">PUNCH<span>START</span> AI</div>
+                <div class="logo-tagline">🇮🇳 INDIA-FOCUSED STARTUP ANALYSIS</div>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <button class="nav-btn" onclick="showPage('login')" id="navLogin">Login</button>
+                <button class="nav-btn hidden" onclick="showPage('dashboard')" id="navDashboard">Dashboard</button>
+                <button class="nav-btn hidden" onclick="showPage('analyze')" id="navAnalyze">Analyze</button>
+                <button class="nav-btn hidden" onclick="showPage('feed')" id="navFeed">Idea Feed</button>
+            </div>
+        </div>
+
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-content">
+                <div class="spinner"></div>
+                <h3 style="color: #1e293b;">PUNCHSTART AI is analyzing your startup...</h3>
+                <p style="color: #64748b;">Using Gemini AI to analyze Indian market & competitor landscape</p>
+            </div>
+        </div>
+
+        <div id="pages">
+            <div id="loginPage" class="page">
+                <div class="auth-box">
+                    <h2 class="auth-title">Welcome to PUNCHSTART AI</h2>
+                    <p class="auth-subtitle">India's #1 AI Startup Analyzer</p>
+                    
+                    <div id="loginForm">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" class="form-control" id="fullName" placeholder="e.g., Rajesh Kumar" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" class="form-control" id="phoneNumber" placeholder="+91 98765 43210" required>
+                        </div>
+                        <button class="btn" onclick="sendOTP()" style="width: 100%;">Continue with Phone</button>
+                    </div>
+
+                    <div id="otpSection" class="hidden" style="margin-top: 30px;">
+                        <div class="alert alert-info">
+                            <strong>📱 Demo Mode:</strong> Check browser console for OTP (Press F12)
+                        </div>
+                        <div class="form-group">
+                            <label>Enter 4-Digit OTP</label>
+                            <input type="text" class="form-control" id="otpInput" placeholder="••••" maxlength="4" style="text-align: center; font-size: 1.5rem; letter-spacing: 8px;">
+                        </div>
+                        <button class="btn" onclick="verifyOTP()" style="width: 100%;">Verify & Login</button>
+                        <button class="btn btn-secondary" onclick="resetLogin()" style="width: 100%; margin-top: 10px;">Back</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="dashboardPage" class="page hidden">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Namaste, <span id="userName"></span>! 👋</h2>
+                    </div>
+                    <p style="color: #64748b; font-size: 1.2rem; margin-bottom: 30px;">Ready to build your next big Indian startup?</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                        <div class="card" style="cursor: pointer; text-align: center;" onclick="showPage('analyze')">
+                            <div style="font-size: 2.5rem; margin-bottom: 15px;">🇮🇳</div>
+                            <h3 style="margin-bottom: 10px;">Analyze New Idea</h3>
+                            <p style="color: #64748b;">Get India-focused AI analysis</p>
+                        </div>
+                        <div class="card" style="cursor: pointer; text-align: center;" onclick="showPage('feed')">
+                            <div style="font-size: 2.5rem; margin-bottom: 15px;">💡</div>
+                            <h3 style="margin-bottom: 10px;">Explore Ideas</h3>
+                            <p style="color: #64748b;">Browse Indian startup ideas</p>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-top: 30px; background: #f8fafc;">
+                        <h3 style="margin-bottom: 20px;">Your Startup Profile</h3>
+                        <div id="userProfile" style="display: grid; gap: 15px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="analyzePage" class="page hidden">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>🇮🇳 Indian Startup Idea Analysis</h2>
+                        <p style="color: #64748b;">Get comprehensive India-focused market analysis from Gemini AI (all figures in ₹ INR)</p>
+                    </div>
+                    <div id="ideaForm">
+                        <div class="form-group">
+                            <label>Idea Title</label>
+                            <input type="text" class="form-control" id="ideaTitle" placeholder="e.g., AI-Powered Healthcare Assistant for Indian Hospitals" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Problem Statement (Indian Context)</label>
+                            <textarea class="form-control" id="problem" placeholder="Describe the problem in Indian market context..." required></textarea>
+                        </div>
+                        <div class="grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div class="form-group">
+                                <label>Target Users in India</label>
+                                <input type="text" class="form-control" id="targetUsers" placeholder="e.g., Indian small business owners" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Industry</label>
+                                <select class="form-control" id="industry" required>
+                                    <option value="">Select Industry</option>
+                                    <option value="Fintech">Fintech (Indian Market)</option>
+                                    <option value="Healthtech">Healthtech (Indian Healthcare)</option>
+                                    <option value="Edtech">Edtech (Indian Education)</option>
+                                    <option value="SaaS">SaaS (Indian SMBs)</option>
+                                    <option value="E-commerce">E-commerce (Indian Consumers)</option>
+                                    <option value="AI/ML">AI/ML (Indian Enterprise)</option>
+                                    <option value="CleanTech">CleanTech (Indian Sustainability)</option>
+                                    <option value="PropTech">PropTech (Indian Real Estate)</option>
+                                    <option value="Logistics">Logistics (Indian Supply Chain)</option>
+                                    <option value="Foodtech">Foodtech (Indian Food Delivery)</option>
+                                    <option value="AgriTech">AgriTech (Indian Agriculture)</option>
+                                    <option value="EV">EV (Indian Electric Vehicles)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Your Solution</label>
+                            <textarea class="form-control" id="solution" placeholder="Describe your solution approach..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label style="display: flex; align-items: center; gap: 10px;">
+                                <input type="checkbox" id="makePublic"> Make this idea public for community feedback
+                            </label>
+                        </div>
+                        <button class="btn" onclick="analyzeIdea()" style="width: 100%;">🇮🇳 Analyze with Gemini AI</button>
+                    </div>
+
+                    <div id="analysisResults" class="hidden" style="margin-top: 40px;">
+                        <h3 style="font-size: 2rem; margin-bottom: 20px;">📊 India-Focused Analysis</h3>
+                        <div class="analysis-grid">
+                            <div class="analysis-card" id="marketValidation">
+                                <h3>📈 Indian Market Validation</h3>
+                            </div>
+                            <div class="analysis-card" id="competitorAnalysis">
+                                <h3>🎯 Indian Competitor Analysis</h3>
+                            </div>
+                            <div class="analysis-card" id="targetAudience">
+                                <h3>👥 Indian Target Audience</h3>
+                            </div>
+                            <div class="analysis-card" id="mvpFeatures">
+                                <h3>⚡ MVP Features</h3>
+                            </div>
+                            <div class="analysis-card" id="techStack">
+                                <h3>💻 Tech Stack</h3>
+                            </div>
+                            <div class="analysis-card" id="monetization">
+                                <h3>💰 Indian Monetization Strategy</h3>
+                            </div>
+                        </div>
+                        <div class="analysis-card" style="margin-top: 20px;" id="roadmap">
+                            <h3>🗺️ India Development Roadmap</h3>
+                            <div class="roadmap-timeline"></div>
+                        </div>
+                        <div class="analysis-card" style="margin-top: 20px;" id="pitch">
+                            <h3>📋 Investor Pitch Deck (Indian Investors)</h3>
+                            <div class="pitch-slides"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="feedPage" class="page hidden">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>🇮🇳 Public Ideas Feed</h2>
+                        <p style="color: #64748b;">Discover Indian startup ideas and collaborate</p>
+                    </div>
+                    
+                    <div id="feedContainer" class="idea-feed"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Gemini API Key
+        const GEMINI_API_KEY = 'AIzaSyDTJlFDWZfc9NFtbGtsaCmDbxMc5az6CsM';
+        const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
+
+        // Database
+        class Database {
+            static get(key) {
+                return JSON.parse(localStorage.getItem(key)) || [];
+            }
+            
+            static set(key, value) {
+                localStorage.setItem(key, JSON.stringify(value));
+            }
+        }
+
+        // User Session
+        let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
+        let generatedOTP = '';
+
+        // Initialize data
+        if (!localStorage.getItem('ideas')) {
+            Database.set('ideas', []);
+        }
+        if (!localStorage.getItem('comments')) {
+            Database.set('comments', {});
+        }
+
+        // Navigation
+        function showPage(pageName) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.add('hidden');
+            });
+            document.getElementById(`${pageName}Page`).classList.remove('hidden');
+            
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            const navBtn = document.getElementById(`nav${pageName.charAt(0).toUpperCase() + pageName.slice(1)}`);
+            if (navBtn) {
+                navBtn.classList.add('active');
+            }
+            
+            if (pageName === 'feed') {
+                loadFeed();
+            }
+        }
+
+        // Update navigation based on auth
+        function updateNavigation() {
+            if (currentUser) {
+                document.getElementById('navLogin').classList.add('hidden');
+                document.getElementById('navDashboard').classList.remove('hidden');
+                document.getElementById('navAnalyze').classList.remove('hidden');
+                document.getElementById('navFeed').classList.remove('hidden');
+                document.getElementById('userName').textContent = currentUser.fullName.split(' ')[0];
+                
+                // Update profile
+                const profileDiv = document.getElementById('userProfile');
+                profileDiv.innerHTML = `
+                    <div><strong>Full Name:</strong> ${currentUser.fullName}</div>
+                    <div><strong>Phone:</strong> ${currentUser.phoneNumber}</div>
+                    <div><strong>Ideas Analyzed:</strong> ${currentUser.ideasAnalyzed || 0}</div>
+                    <div><strong>Member Since:</strong> ${new Date(currentUser.joinedAt || Date.now()).toLocaleDateString('en-IN')}</div>
+                `;
+                
+                showPage('dashboard');
+            } else {
+                document.getElementById('navLogin').classList.remove('hidden');
+                document.getElementById('navDashboard').classList.add('hidden');
+                document.getElementById('navAnalyze').classList.add('hidden');
+                document.getElementById('navFeed').classList.add('hidden');
+                showPage('login');
+            }
+        }
+
+        // Authentication
+        function sendOTP() {
+            const fullName = document.getElementById('fullName').value;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            
+            if (!fullName || !phoneNumber) {
+                showAlert('Please enter your name and phone number', 'error');
+                return;
+            }
+            
+            generatedOTP = Math.floor(1000 + Math.random() * 9000).toString();
+            
+            localStorage.setItem('tempUser', JSON.stringify({ 
+                fullName, 
+                phoneNumber,
+                joinedAt: Date.now(),
+                ideasAnalyzed: 0
+            }));
+            
+            console.clear();
+            console.log('%c🔐 PUNCHSTART AI OTP', 'font-size: 20px; font-weight: bold; color: #1e293b;');
+            console.log('%c📱 Your 4-digit OTP:', 'font-size: 16px; color: #475569;');
+            console.log('%c' + generatedOTP, 'font-size: 32px; font-weight: bold; color: #059669; letter-spacing: 8px;');
+            
+            document.getElementById('loginForm').classList.add('hidden');
+            document.getElementById('otpSection').classList.remove('hidden');
+            document.getElementById('otpInput').value = '';
+            
+            showAlert('OTP sent! Check console (F12)', 'success');
+        }
+
+        function verifyOTP() {
+            const enteredOTP = document.getElementById('otpInput').value;
+            const tempUser = JSON.parse(localStorage.getItem('tempUser'));
+            
+            if (!tempUser) {
+                showAlert('Session expired. Please try again.', 'error');
+                resetLogin();
+                return;
+            }
+            
+            if (enteredOTP === generatedOTP) {
+                currentUser = {
+                    ...tempUser,
+                    ideasAnalyzed: 0,
+                    joinedAt: Date.now()
+                };
+                
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                localStorage.removeItem('tempUser');
+                
+                updateNavigation();
+                showAlert('Login successful! Welcome to PUNCHSTART AI.', 'success');
+            } else {
+                showAlert('Invalid OTP. Please check console for the correct OTP.', 'error');
+            }
+        }
+
+        function resetLogin() {
+            document.getElementById('loginForm').classList.remove('hidden');
+            document.getElementById('otpSection').classList.add('hidden');
+            document.getElementById('otpInput').value = '';
+            document.getElementById('fullName').value = '';
+            document.getElementById('phoneNumber').value = '';
+        }
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            currentUser = null;
+            updateNavigation();
+            showAlert('Logged out successfully', 'success');
+        }
+
+        function showAlert(message, type) {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type}`;
+            alertDiv.textContent = message;
+            
+            const currentPage = document.querySelector('.page:not(.hidden)');
+            currentPage.insertBefore(alertDiv, currentPage.firstChild);
+            
+            setTimeout(() => alertDiv.remove(), 3000);
+        }
+
+        // Function to call Gemini API
+        async function callGeminiAPI(prompt) {
+            try {
+                const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{
+                                text: prompt
+                            }]
+                        }]
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API call failed: ${response.status}`);
+                }
+
+                const data = await response.json();
+                return data.candidates[0].content.parts[0].text;
+            } catch (error) {
+                console.error('Gemini API Error:', error);
+                throw error;
+            }
+        }
+
+        // Function to parse Gemini response into structured data
+        function parseGeminiResponse(response) {
+            try {
+                // Try to parse if it's JSON
+                if (response.trim().startsWith('{')) {
+                    return JSON.parse(response);
+                }
+                
+                // Otherwise, structure the text response
+                const sections = response.split('##').filter(s => s.trim());
+                const analysis = {
+                    marketValidation: [],
+                    competitorAnalysis: [],
+                    targetAudience: [],
+                    mvpFeatures: [],
+                    techStack: [],
+                    monetization: [],
+                    roadmap: {
+                        phase1: { title: '', milestones: [], risks: [] },
+                        phase2: { title: '', milestones: [], risks: [] },
+                        phase3: { title: '', milestones: [], risks: [] }
+                    },
+                    pitch: []
+                };
+
+                // Simple parsing logic - you can enhance this based on your needs
+                sections.forEach(section => {
+                    const lines = section.split('\n').filter(l => l.trim());
+                    const title = lines[0].toLowerCase();
+                    
+                    if (title.includes('market') || title.includes('validation')) {
+                        analysis.marketValidation = lines.slice(1).map(l => l.replace(/^[-*•]\s*/, '').trim());
+                    } else if (title.includes('competitor')) {
+                        analysis.competitorAnalysis = lines.slice(1).map(l => l.replace(/^[-*•]\s*/, '').trim());
+                    } else if (title.includes('target') || title.includes('audience')) {
+                        analysis.targetAudience = lines.slice(1).map(l => l.replace(/^[-*•]\s*/, '').trim());
+                    } else if (title.includes('mvp') || title.includes('feature')) {
+                        analysis.mvpFeatures = lines.slice(1).map(l => l.replace(/^[-*•]\s*/, '').trim());
+                    } else if (title.includes('tech') || title.includes('stack')) {
+                        analysis.techStack = lines.slice(1).map(l => l.replace(/^[-*•]\s*/, '').trim());
+                    } else if (title.includes('monetization') || title.includes('revenue')) {
+                        analysis.monetization = lines.slice(1).map(l => l.replace(/^[-*•]\s*/, '').trim());
+                    } else if (title.includes('roadmap')) {
+                        // Parse roadmap sections
+                        lines.forEach(line => {
+                            if (line.includes('Phase 1') || line.includes('phase1')) {
+                                analysis.roadmap.phase1.milestones.push(line);
+                            } else if (line.includes('Phase 2') || line.includes('phase2')) {
+                                analysis.roadmap.phase2.milestones.push(line);
+                            } else if (line.includes('Phase 3') || line.includes('phase3')) {
+                                analysis.roadmap.phase3.milestones.push(line);
+                            }
+                        });
+                    }
+                });
+
+                return analysis;
+            } catch (e) {
+                console.error('Error parsing Gemini response:', e);
+                return null;
+            }
+        }
+
+        // Main analysis function using Gemini
+        async function analyzeIdea() {
+            const ideaTitle = document.getElementById('ideaTitle').value;
+            const problem = document.getElementById('problem').value;
+            const targetUsers = document.getElementById('targetUsers').value;
+            const solution = document.getElementById('solution').value;
+            const industry = document.getElementById('industry').value;
+            const makePublic = document.getElementById('makePublic').checked;
+            const analyzeBtn = document.querySelector("#ideaForm button[onclick='analyzeIdea()']");
+
+            if (!ideaTitle || !problem || !targetUsers || !solution || !industry) {
+                showAlert('Please fill in all fields', 'error');
+                return;
+            }
+
+            // Show loading
+            document.getElementById('loadingOverlay').classList.add('active');
+            document.getElementById('ideaForm').classList.add('hidden');
+            document.getElementById('analysisResults').classList.add('hidden');
+            if (analyzeBtn) analyzeBtn.disabled = true;
+
+            try {
+                // Create prompt for Gemini
+                const prompt = `You are an expert Indian startup consultant. Analyze this Indian startup idea and provide detailed, actionable insights.
+
+Idea Title: ${ideaTitle}
+Industry: ${industry}
+Problem (Indian Context): ${problem}
+Target Users in India: ${targetUsers}
+Solution: ${solution}
+
+Please provide a comprehensive analysis covering:
+
+1. **Indian Market Validation**: TAM/SAM/SOM in ₹ Crores, market growth rate, key drivers, and risks specific to India.
+
+2. **Indian Competitor Analysis**: List top Indian competitors with their valuations if public, their weaknesses, and market gaps (especially in Bharat/Tier 2/3 cities).
+
+3. **Indian Target Audience**: Detailed ICP, demographics, psychographics, pain points, and customer metrics (CAC, LTV in ₹).
+
+4. **MVP Features**: Core features needed for Indian market, including Indian language support, UPI payments, Aadhaar integration, etc.
+
+5. **Tech Stack**: Recommended technologies optimized for Indian users (consider low bandwidth, multiple languages).
+
+6. **Indian Monetization Strategy**: Pricing in ₹, revenue models, projected MRR/ARR for Years 1-3.
+
+7. **India Development Roadmap**: 
+   - Phase 1 (Months 1-4): MVP development, budget in ₹ Lakhs, team size, key milestones
+   - Phase 2 (Months 5-8): Scaling, budget in ₹ Crores, team expansion, milestones  
+   - Phase 3 (Months 9-12): Pan-India expansion, Series A preparation, milestones
+
+8. **Investor Pitch Deck**: Key slides for Indian investors with focus on India-specific metrics.
+
+Format the response in clear sections with bullet points. Use ₹ for Indian Rupees. Be specific with numbers and actionable insights.`;
+
+                // Call Gemini API
+                const geminiResponse = await callGeminiAPI(prompt);
+                
+                // Parse the response
+                const analysis = parseGeminiResponse(geminiResponse) || fallbackAnalysis(ideaTitle, problem, targetUsers, solution, industry);
+                
+                // Update user profile
+                if (currentUser) {
+                    currentUser.ideasAnalyzed = (currentUser.ideasAnalyzed || 0) + 1;
+                    let analyzedIdeas = JSON.parse(localStorage.getItem('analyzedIdeas_' + currentUser.phoneNumber) || '[]');
+                    analyzedIdeas.push({
+                        title: ideaTitle,
+                        problem,
+                        targetUsers,
+                        solution,
+                        industry,
+                        analyzedAt: new Date().toISOString()
+                    });
+                    localStorage.setItem('analyzedIdeas_' + currentUser.phoneNumber, JSON.stringify(analyzedIdeas));
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                }
+
+                // Save to public feed if checked
+                if (makePublic && currentUser) {
+                    saveToPublicFeed(ideaTitle, problem, targetUsers, solution, industry, analysis);
+                }
+
+                // Display analysis
+                displayAnalysis(analysis);
+
+                document.getElementById('loadingOverlay').classList.remove('active');
+                document.getElementById('analysisResults').classList.remove('hidden');
+                
+                // Scroll to results
+                document.getElementById('analysisResults').scrollIntoView({ behavior: 'smooth' });
+                showAlert('Analysis complete! Check your Indian market insights.', 'success');
+
+            } catch (error) {
+                console.error('Analysis error:', error);
+                document.getElementById('loadingOverlay').classList.remove('active');
+                
+                // Fallback to mock data if API fails
+                const fallback = fallbackAnalysis(ideaTitle, problem, targetUsers, solution, industry);
+                displayAnalysis(fallback);
+                document.getElementById('analysisResults').classList.remove('hidden');
+                
+                showAlert('Using fallback analysis due to API error', 'info');
+            } finally {
+                if (analyzeBtn) analyzeBtn.disabled = false;
+            }
+        }
+
+        // Fallback analysis function (your existing generateIndianAnalysis)
+        function fallbackAnalysis(title, problem, targetUsers, solution, industry) {
+            // Indian market sizes by industry (in ₹ Crores)
+            const marketSizes = {
+                'Fintech': { current: 850000, growth: 27, projection: 2100000 },
+                'Healthtech': { current: 320000, growth: 31, projection: 950000 },
+                'Edtech': { current: 280000, growth: 39, projection: 1200000 },
+                'SaaS': { current: 180000, growth: 42, projection: 750000 },
+                'E-commerce': { current: 450000, growth: 25, projection: 1300000 },
+                'AI/ML': { current: 95000, growth: 48, projection: 520000 },
+                'CleanTech': { current: 65000, growth: 35, projection: 280000 },
+                'PropTech': { current: 42000, growth: 29, projection: 150000 },
+                'Logistics': { current: 210000, growth: 22, projection: 550000 },
+                'Foodtech': { current: 85000, growth: 33, projection: 320000 },
+                'AgriTech': { current: 45000, growth: 37, projection: 190000 },
+                'EV': { current: 38000, growth: 52, projection: 220000 }
+            };
+            
+            const market = marketSizes[industry] || marketSizes['SaaS'];
+            
+            // Indian competitors by industry
+            const competitors = {
+                'Fintech': ['PhonePe (₹85,000 Cr)', 'Paytm (₹42,000 Cr)', 'Razorpay (₹7,500 Cr)', 'CRED (₹6,400 Cr)'],
+                'Healthtech': ['Practo (₹3,200 Cr)', 'PharmEasy (₹5,600 Cr)', 'Cult.fit (₹2,800 Cr)', '1mg (₹4,100 Cr)'],
+                'Edtech': ['BYJU\'S (₹52,000 Cr)', 'Unacademy (₹22,000 Cr)', 'UpGrad (₹12,000 Cr)', 'Vedantu (₹4,500 Cr)'],
+                'SaaS': ['Zoho (₹62,000 Cr)', 'Freshworks (₹45,000 Cr)', 'BrowserStack (₹38,000 Cr)', 'Postman (₹41,000 Cr)'],
+                'E-commerce': ['Flipkart (₹2,10,000 Cr)', 'Amazon India (₹1,80,000 Cr)', 'Meesho (₹35,000 Cr)', 'Nykaa (₹48,000 Cr)'],
+                'AI/ML': ['Mad Street Den (₹2,100 Cr)', 'Haptik (₹1,200 Cr)', 'Niki.ai (₹850 Cr)', 'Locus (₹1,800 Cr)'],
+                'Logistics': ['Delhivery (₹42,000 Cr)', 'BlackBuck (₹18,000 Cr)', 'XpressBees (₹12,000 Cr)', 'Ecom Express (₹7,500 Cr)'],
+                'EV': ['Ola Electric (₹48,000 Cr)', 'Ather Energy (₹12,000 Cr)', 'Tata Motors EV (₹85,000 Cr)', 'Mahindra Electric (₹25,000 Cr)']
+            };
+            
+            const competitorList = competitors[industry] || competitors['SaaS'];
+            
+            // Convert to Crores and format
+            const tam = (market.current / 100).toFixed(0);
+            const sam = (tam * (0.3 + Math.random() * 0.2)).toFixed(0);
+            const som = (sam * (0.15 + Math.random() * 0.1)).toFixed(0);
+            
+            return {
+                marketValidation: [
+                    `Total Addressable Indian Market (TAM): ₹${tam} Crore by 2026`,
+                    `Serviceable Addressable Indian Market (SAM): ₹${sam} Crore`,
+                    `Serviceable Obtainable Indian Market (SOM): ₹${som} Crore (Year 3)`,
+                    `Indian Market Growth Rate: ${market.growth}% CAGR (Industry avg: 22%)`,
+                    `Key Indian Drivers: Digital India, UPI adoption, Jio effect`,
+                    `Indian Market Risks: State regulations, Price sensitivity, Infrastructure`
+                ],
+                
+                competitorAnalysis: [
+                    `Top Indian Competitors: ${competitorList.join(', ')}`,
+                    `Indian Market Share: Leaders (45%), Challengers (30%), Niche (25%)`,
+                    `Your Advantage: India-first approach vs global solutions`,
+                    `Competitor Weaknesses: High pricing, Poor Indian language support`,
+                    `Market Gaps: Bharat (Tier 2/3 cities) underserved, Vernacular opportunity`,
+                    `Entry Barriers: Distribution networks, Brand trust in India`
+                ],
+                
+                targetAudience: [
+                    `Primary ICP: ${targetUsers} (Size: ${Math.round(2000000 + Math.random() * 5000000)} potential Indian users)`,
+                    `Demographics: 18-40 years, Urban and Semi-urban, Smartphone users`,
+                    `Psychographics: Value-conscious, Digital-first, Vernacular preferers`,
+                    `Indian Pain Points: ${problem.split(' ').slice(0, 5).join(' ')}..., Cash flow issues, Trust deficit`,
+                    `Customer Acquisition Cost (CAC): ₹${Math.round(500 + Math.random() * 1500)}`,
+                    `Customer Lifetime Value (LTV): ₹${Math.round(15000 + Math.random() * 25000)}`,
+                    `LTV/CAC Ratio: ${(3.5 + Math.random() * 2).toFixed(1)}x (Indian SaaS avg: 3.2x)`
+                ],
+                
+                mvpFeatures: [
+                    `Core Feature: ${solution.split(' ').slice(0, 3).join(' ')} for Indian users`,
+                    'Mobile-first design with Indian language support',
+                    'UPI/BHIM payment integration',
+                    'WhatsApp business API integration',
+                    'Aadhaar eKYC verification (if applicable)',
+                    'Offline mode for low connectivity areas',
+                    'Indian customer support in multiple languages',
+                    `Development effort: ${Math.round(6 + Math.random() * 4)} weeks`
+                ],
+                
+                techStack: [
+                    'Frontend: React + Next.js (Vercel India region)',
+                    'Mobile: React Native (Android-first for India)',
+                    'Backend: Node.js + PostgreSQL (AWS Mumbai)',
+                    'Payments: Razorpay/PhonePe/Cashfree',
+                    'Cloud: AWS India (Mumbai) or Azure India',
+                    'KYC: Digilocker/Aadhaar APIs',
+                    'Monitoring: MoEngage/Clevertap',
+                    'Estimated Infrastructure Cost: ₹75,000/month (MVP)'
+                ],
+                
+                monetization: [
+                    'Phase 1: Freemium + Premium at ₹199/user/month',
+                    'Phase 2: Business at ₹999/month + Enterprise at ₹9,999/month',
+                    'Phase 3: Transaction fee model (1-2% per transaction)',
+                    'Projected MRR Year 1: ₹15 Lakhs | Year 2: ₹65 Lakhs | Year 3: ₹2.1 Crore',
+                    'Gross Margin: 75-80% (Indian SaaS average)',
+                    'Payback Period: 10-14 months',
+                    'Expansion Revenue: 18-22% through Indian enterprise upsells'
+                ],
+                
+                roadmap: {
+                    phase1: {
+                        title: 'Phase 1: MVP for Indian Market (Months 1-4)',
+                        budget: '₹35 Lakhs - ₹50 Lakhs',
+                        team: 'Founder + 3 Engineers + 1 UI/UX',
+                        milestones: [
+                            'Week 1-2: Indian user interviews (100+ Bharat users)',
+                            'Week 3-6: Hindi + regional language support',
+                            'Week 7-10: MVP with UPI payments',
+                            'Week 11-14: Beta with 500 Indian users',
+                            'Week 15-16: Launch on ProductHunt India',
+                            'Key Metric: 2,000 waitlist signups'
+                        ],
+                        risks: ['Payment integration issues', 'Low internet connectivity', 'Language barriers']
+                    },
+                    phase2: {
+                        title: 'Phase 2: India Scale-up (Months 5-8)',
+                        budget: '₹1.2 Crore - ₹1.8 Crore',
+                        team: 'Team expansion to 12 people',
+                        milestones: [
+                            'Month 5: Launch in Tier 1 cities',
+                            'Month 6: Vernacular marketing campaign',
+                            'Month 7: Android app launch',
+                            'Month 8: Enterprise features for Indian businesses',
+                            'Key Metric: 5,000 active users, 12% conversion'
+                        ],
+                        risks: ['Competitor copying', 'Customer support scaling', 'Burn rate']
+                    },
+                    phase3: {
+                        title: 'Phase 3: Pan-India Expansion (Months 9-12)',
+                        budget: '₹4 Crore - ₹6 Crore',
+                        team: 'Team expansion to 25 people',
+                        milestones: [
+                            'Month 9: Series A (Indian VCs) preparation',
+                            'Month 10: Launch in 10 Tier 2 cities',
+                            'Month 11: 8 Indian languages support',
+                            'Month 12: Enterprise sales team',
+                            'Key Metric: ₹25 Lakhs MRR, 15 enterprise clients'
+                        ],
+                        risks: ['Talent acquisition', 'Market saturation', 'Regulatory compliance']
+                    }
+                },
+                
+                pitch: [
+                    { slide: 1, title: 'Indian Problem', content: problem.substring(0, 60) + '... (Bharat focus)' },
+                    { slide: 2, title: 'Made in India Solution', content: solution.substring(0, 60) + '...' },
+                    { slide: 3, title: 'India Market Size', content: `₹${tam} Crore TAM growing at ${market.growth}%` },
+                    { slide: 4, title: 'Product', content: `India-first platform for ${targetUsers}` },
+                    { slide: 5, title: 'Traction India', content: 'MVP ready, Beta: 500+ Indian users' },
+                    { slide: 6, title: 'Team', content: `${currentUser?.fullName || 'Founder'} + IIT/IIM alumni` },
+                    { slide: 7, title: 'Indian Competition', content: `Differentiated by Bharat-first approach` },
+                    { slide: 8, title: 'Financials (₹ Cr)', content: `Projected ₹5 Cr ARR by Year 3, Margins 78%` }
+                ]
+            };
+        }
+
+        function displayAnalysis(analysis) {
+            // Market Validation
+            document.getElementById('marketValidation').innerHTML = 
+                '<h3>📈 Indian Market Validation</h3><ul>' + 
+                analysis.marketValidation.map(item => `<li>${item}</li>`).join('') + 
+                '</ul>';
+            
+            // Competitor Analysis
+            document.getElementById('competitorAnalysis').innerHTML = 
+                '<h3>🎯 Indian Competitor Analysis</h3><ul>' + 
+                analysis.competitorAnalysis.map(item => `<li>${item}</li>`).join('') + 
+                '</ul>';
+            
+            // Target Audience
+            document.getElementById('targetAudience').innerHTML = 
+                '<h3>👥 Indian Target Audience</h3><ul>' + 
+                analysis.targetAudience.map(item => `<li>${item}</li>`).join('') + 
+                '</ul>';
+            
+            // MVP Features
+            document.getElementById('mvpFeatures').innerHTML = 
+                '<h3>⚡ MVP Features</h3><ul>' + 
+                analysis.mvpFeatures.map(item => `<li>${item}</li>`).join('') + 
+                '</ul>';
+            
+            // Tech Stack
+            document.getElementById('techStack').innerHTML = 
+                '<h3>💻 Tech Stack</h3><ul>' + 
+                analysis.techStack.map(item => `<li>${item}</li>`).join('') + 
+                '</ul>';
+            
+            // Monetization
+            document.getElementById('monetization').innerHTML = 
+                '<h3>💰 Indian Monetization Strategy</h3><ul>' + 
+                analysis.monetization.map(item => `<li>${item}</li>`).join('') + 
+                '</ul>';
+            
+            // Roadmap
+            const roadmapHTML = `
+                <h3>🗺️ India Development Roadmap</h3>
+                <div class="roadmap-timeline">
+                    <div class="phase-card">
+                        <div class="phase-title">${analysis.roadmap.phase1.title}</div>
+                        <div class="phase-duration">
+                            <span>💰 Budget: ${analysis.roadmap.phase1.budget}</span>
+                            <span>👥 Team: ${analysis.roadmap.phase1.team}</span>
+                        </div>
+                        <ul>
+                            ${analysis.roadmap.phase1.milestones.map(m => `<li>${m}</li>`).join('')}
+                        </ul>
+                        <div style="margin-top: 15px;">
+                            <strong>Key Risks:</strong> ${analysis.roadmap.phase1.risks.join(' • ')}
+                        </div>
+                    </div>
+                    
+                    <div class="phase-card">
+                        <div class="phase-title">${analysis.roadmap.phase2.title}</div>
+                        <div class="phase-duration">
+                            <span>💰 Budget: ${analysis.roadmap.phase2.budget}</span>
+                            <span>👥 Team: ${analysis.roadmap.phase2.team}</span>
+                        </div>
+                        <ul>
+                            ${analysis.roadmap.phase2.milestones.map(m => `<li>${m}</li>`).join('')}
+                        </ul>
+                        <div style="margin-top: 15px;">
+                            <strong>Key Risks:</strong> ${analysis.roadmap.phase2.risks.join(' • ')}
+                        </div>
+                    </div>
+                    
+                    <div class="phase-card">
+                        <div class="phase-title">${analysis.roadmap.phase3.title}</div>
+                        <div class="phase-duration">
+                            <span>💰 Budget: ${analysis.roadmap.phase3.budget}</span>
+                            <span>👥 Team: ${analysis.roadmap.phase3.team}</span>
+                        </div>
+                        <ul>
+                            ${analysis.roadmap.phase3.milestones.map(m => `<li>${m}</li>`).join('')}
+                        </ul>
+                        <div style="margin-top: 15px;">
+                            <strong>Key Risks:</strong> ${analysis.roadmap.phase3.risks.join(' • ')}
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('roadmap').innerHTML = roadmapHTML;
+            
+            // Pitch
+            const pitchHTML = `
+                <h3>📋 Investor Pitch Deck (Indian Investors)</h3>
+                <div class="pitch-slides">
+                    ${analysis.pitch.map(slide => `
+                        <div class="slide-card">
+                            <div class="slide-number">Slide ${slide.slide}: ${slide.title}</div>
+                            <div class="slide-content">${slide.content}</div>
+                        </div>
+                    `).join('')}
+                </div>
+                <div style="margin-top: 20px; background: #f8fafc; padding: 15px; border-radius: 12px;">
+                    <strong>📊 Key Metrics for Indian Investors:</strong>
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 15px;">
+                        <div><span class="metric-badge">TAM</span> ₹${(Math.random() * 100 + 50).toFixed(0)}K Cr</div>
+                        <div><span class="metric-badge">Growth</span> ${(25 + Math.random() * 20).toFixed(0)}%</div>
+                        <div><span class="metric-badge">Margins</span> 75-80%</div>
+                        <div><span class="metric-badge">Ask</span> ₹4 Cr for 15%</div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('pitch').innerHTML = pitchHTML;
+            
+            // Add "Analyze Another" button if not exists
+            if (!document.getElementById('analyzeAnotherBtn')) {
+                let btn = document.createElement('button');
+                btn.className = 'btn';
+                btn.id = 'analyzeAnotherBtn';
+                btn.style = 'margin-top: 30px; width: 100%;';
+                btn.innerHTML = 'Analyze Another Indian Idea';
+                btn.onclick = resetAnalyzeForm;
+                document.getElementById('analysisResults').appendChild(btn);
+            }
+        }
+
+        function resetAnalyzeForm() {
+            document.getElementById('ideaForm').reset();
+            document.getElementById('analysisResults').classList.add('hidden');
+            document.getElementById('ideaForm').classList.remove('hidden');
+            let btn = document.getElementById('analyzeAnotherBtn');
+            if (btn) btn.remove();
+        }
+
+        function saveToPublicFeed(title, problem, targetUsers, solution, industry, analysis) {
+            const ideas = Database.get('ideas');
+            const newIdea = {
+                id: Date.now(),
+                userId: currentUser.phoneNumber,
+                authorName: currentUser.fullName,
+                title,
+                problem: problem.substring(0, 100) + '...',
+                targetUsers,
+                solution: solution.substring(0, 100) + '...',
+                industry,
+                marketSize: analysis.marketValidation[0],
+                timestamp: new Date().toISOString(),
+                likes: Math.floor(Math.random() * 20),
+                comments: 0
+            };
+            
+            ideas.push(newIdea);
+            Database.set('ideas', ideas);
+            
+            const comments = Database.get('comments');
+            comments[newIdea.id] = [];
+            Database.set('comments', comments);
+        }
+
+        function loadFeed() {
+            const ideas = Database.get('ideas');
+            const feedContainer = document.getElementById('feedContainer');
+            
+            if (ideas.length === 0) {
+                feedContainer.innerHTML = '<div class="alert alert-info">No public ideas yet. Be the first to share your Indian startup idea!</div>';
+                return;
+            }
+            
+            let html = '';
+            ideas.reverse().forEach(idea => {
+                html += `
+                    <div class="idea-post">
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
+                            <div>
+                                <h3 style="font-size: 1.5rem; margin-bottom: 5px;">${idea.title}</h3>
+                                <div style="color: #64748b;">by ${idea.authorName} · ${new Date(idea.timestamp).toLocaleDateString('en-IN')}</div>
+                            </div>
+                            <span class="metric-badge">${idea.industry}</span>
+                        </div>
+                        
+                        <p><strong>Problem:</strong> ${idea.problem}</p>
+                        <p><strong>Solution:</strong> ${idea.solution}</p>
+                        <p><strong>Target Users:</strong> ${idea.targetUsers}</p>
+                        <p><strong>Market:</strong> ${idea.marketSize}</p>
+                        
+                        <div style="display: flex; gap: 20px; margin-top: 20px;">
+                            <span>❤️ ${idea.likes} likes</span>
+                            <span>💬 ${idea.comments} comments</span>
+                        </div>
+                        
+                        <div class="comment-section">
+                            <div class="form-group">
+                                <textarea class="form-control" id="comment-${idea.id}" placeholder="Add feedback in English/Hindi..." style="min-height: 80px;"></textarea>
+                                <button class="btn btn-secondary" onclick="addComment(${idea.id})" style="margin-top: 10px;">Post Comment</button>
+                            </div>
+                            
+                            <div id="comments-${idea.id}">
+                                ${loadComments(idea.id)}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            feedContainer.innerHTML = html;
+        }
+
+        function loadComments(ideaId) {
+            const comments = Database.get('comments');
+            const ideaComments = comments[ideaId] || [];
+            
+            if (ideaComments.length === 0) {
+                return '<p style="color: #94a3b8;">No comments yet. Be the first to share feedback!</p>';
+            }
+            
+            return ideaComments.map(comment => `
+                <div style="background: #f8fafc; padding: 12px; border-radius: 8px; margin-bottom: 10px;">
+                    <strong>${comment.author}:</strong> ${comment.text}
+                    <div style="font-size: 0.8rem; color: #64748b; margin-top: 5px;">${new Date(comment.timestamp).toLocaleString('en-IN')}</div>
+                </div>
+            `).join('');
+        }
+
+        function addComment(ideaId) {
+            if (!currentUser) {
+                showAlert('Please login to comment', 'error');
+                return;
+            }
+            
+            const commentText = document.getElementById(`comment-${ideaId}`).value;
+            if (!commentText.trim()) return;
+            
+            const comments = Database.get('comments');
+            
+            if (!comments[ideaId]) {
+                comments[ideaId] = [];
+            }
+            
+            comments[ideaId].push({
+                author: currentUser.fullName,
+                text: commentText,
+                timestamp: new Date().toISOString()
+            });
+            
+            Database.set('comments', comments);
+            
+            // Update comment count
+            const ideas = Database.get('ideas');
+            const ideaIndex = ideas.findIndex(i => i.id === ideaId);
+            if (ideaIndex !== -1) {
+                ideas[ideaIndex].comments = comments[ideaId].length;
+                Database.set('ideas', ideas);
+            }
+            
+            document.getElementById(`comment-${ideaId}`).value = '';
+            loadFeed();
+            showAlert('Comment added!', 'success');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            updateNavigation();
+            
+            // Add analyzed ideas to profile if on dashboard
+            if (document.getElementById('userProfile') && currentUser) {
+                let analyzedIdeas = JSON.parse(localStorage.getItem('analyzedIdeas_' + currentUser.phoneNumber) || '[]');
+                if (analyzedIdeas.length > 0) {
+                    let analyzedDiv = document.createElement('div');
+                    analyzedDiv.innerHTML = '<h4 style="margin:18px 0 8px 0;font-size:1.1rem;color:#1e293b;">Your Analyzed Ideas</h4>' + 
+                        analyzedIdeas.reverse().map(idea => `
+                            <div style="background:#f8fafc;padding:16px;border-radius:12px;margin-bottom:10px;">
+                                <div style="font-weight:700;font-size:1.1rem;">${idea.title}</div>
+                                <div style="color:#64748b;font-size:0.95rem;">${idea.industry} · ${new Date(idea.analyzedAt).toLocaleDateString('en-IN')}</div>
+                                <div style="margin-top:8px;"><strong>Problem:</strong> ${idea.problem.substring(0,80)}...</div>
+                            </div>
+                        `).join('');
+                    document.getElementById('userProfile').appendChild(analyzedDiv);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
