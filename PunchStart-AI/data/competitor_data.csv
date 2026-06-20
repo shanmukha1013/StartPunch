@@ -1,0 +1,8 @@
+industry,competitor_type,positioning,common_gap
+AI/ML,Horizontal AI platforms,Broad automation across many workflows,Weak vertical depth and limited local context.
+SaaS,Incumbent workflow suites,All-in-one operations systems,Heavy setup and generic reporting.
+Fintech,Banks and payment platforms,Trusted financial infrastructure,Slow product iteration for niche segments.
+Healthtech,Hospital management systems,Administrative systems of record,Poor patient-facing experience.
+Edtech,Learning management systems,Content and cohort delivery,Limited personalization and weak outcome proof.
+CleanTech,Consultancies and hardware vendors,Audit-led implementation,Low software scalability.
+EV,Fleet software providers,Vehicle and charging operations,Fragmented financing and maintenance data.

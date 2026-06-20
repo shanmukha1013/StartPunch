@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - PunchStart</title>
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/login.css">
+</head>
+<body class="auth-page">
+    <main class="auth-container">
+        <section class="auth-copy">
+            <a href="../index.html" class="logo-text"><span class="brand-mark"><span><span class="p">P</span><span class="s">S</span></span></span><span class="brand-punch">Punch</span><span class="brand-start">Start</span></a>
+            <h1>Validate before you build.</h1>
+            <p>Enter your founder profile to access reports, portfolio analytics, and the community feed on this device.</p>
+        </section>
+
+        <section class="auth-card">
+            <div id="login-form-step" class="auth-step">
+                <h2>Founder workspace</h2>
+                <div class="form-group">
+                    <label for="founder-name">Founder name</label>
+                    <input type="text" id="founder-name" class="form-control" placeholder="Your name" autocomplete="name">
+                </div>
+                <div class="form-group">
+                    <label for="founder-email">Email</label>
+                    <input type="email" id="founder-email" class="form-control" placeholder="founder@company.com" autocomplete="email">
+                </div>
+                <button id="create-session-btn" class="btn btn-primary btn-full">Enter Workspace</button>
+                <p id="auth-error" class="auth-error"></p>
+            </div>
+            <div id="welcome-step" class="auth-step hidden">
+                <div class="welcome-message">
+                    <div class="checkmark">OK</div>
+                    <h2>Workspace ready</h2>
+                    <p>Opening your dashboard.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="../assets/js/common.js"></script>
+    <script src="../assets/js/auth.js"></script>
+</body>
+</html>

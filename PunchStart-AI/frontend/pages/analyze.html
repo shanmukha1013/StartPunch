@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyze Startup - PunchStart</title>
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/analyze.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="../index.html" class="sidebar-logo"><span class="brand-mark"><span><span class="p">P</span><span class="s">S</span></span></span><span class="brand-punch">Punch</span><span class="brand-start">Start</span></a>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item"><span class="nav-icon">D</span>Dashboard</a>
+                <a href="analyze.html" class="nav-item active"><span class="nav-icon">A</span>New Analysis</a>
+                <a href="feed.html" class="nav-item"><span class="nav-icon">F</span>Founder Feed</a>
+                <a href="../index.html" class="nav-item" id="logout-link"><span class="nav-icon">O</span>Logout</a>
+            </nav>
+        </aside>
+
+        <main class="main-content analyze-page">
+            <header class="page-header">
+                <div>
+                    <h1>Professional startup validation</h1>
+                    <p>Capture the evidence a serious investor expects: problem, buyer, market, business model, team, funding plan, and execution roadmap.</p>
+                </div>
+                <div class="wizard-status">
+                    <span id="step-count">Step 1 of 8</span>
+                    <strong id="step-label">Startup Basics</strong>
+                </div>
+            </header>
+
+            <section class="wizard-shell">
+                <div class="progress-track">
+                    <div id="wizard-progress" class="progress-fill"></div>
+                </div>
+
+                <form id="analyze-form" class="analysis-form">
+                    <section class="wizard-step active" data-step="0" data-title="Startup Basics">
+                        <h2>Startup basics</h2>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="startup-name">Startup name</label>
+                                <input type="text" id="startup-name" class="form-control" placeholder="Example: Atlas Ledger" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="industry">Industry</label>
+                                <select id="industry" class="form-control" required>
+                                    <option value="">Select industry</option>
+                                    <option value="Intelligent Automation">Intelligent Automation</option>
+                                    <option value="SaaS">SaaS</option>
+                                    <option value="Fintech">Fintech</option>
+                                    <option value="Healthtech">Healthtech</option>
+                                    <option value="Edtech">Edtech</option>
+                                    <option value="E-commerce">E-commerce</option>
+                                    <option value="CleanTech">CleanTech</option>
+                                    <option value="EV">Electric Vehicles</option>
+                                    <option value="AgriTech">AgriTech</option>
+                                    <option value="Logistics">Logistics</option>
+                                    <option value="PropTech">PropTech</option>
+                                    <option value="Foodtech">Foodtech</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row single-field">
+                            <div class="form-group">
+                                <label for="business-stage">Business stage</label>
+                                <select id="business-stage" class="form-control">
+                                    <option value="">Select stage</option>
+                                    <option value="Ideation">Ideation</option>
+                                    <option value="MVP Development">MVP Development</option>
+                                    <option value="Beta Launch">Beta Launch</option>
+                                    <option value="Early Traction">Early Traction</option>
+                                    <option value="Scaling">Scaling</option>
+                                </select>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="wizard-step" data-step="1" data-title="Problem">
+                        <h2>Problem</h2>
+                        <div class="form-group">
+                            <label for="problem">What painful problem are you solving?</label>
+                            <textarea id="problem" class="form-control" required placeholder="Describe who has the problem, how often it happens, and what it costs them."></textarea>
+                        </div>
+                    </section>
+
+                    <section class="wizard-step" data-step="2" data-title="Solution">
+                        <h2>Solution</h2>
+                        <div class="form-group">
+                            <label for="solution">How does your product solve it?</label>
+                            <textarea id="solution" class="form-control" required placeholder="Explain the workflow, product experience, automation advantage, or service model."></textarea>
+                        </div>
+                    </section>
+
+                    <section class="wizard-step" data-step="3" data-title="Market">
+                        <h2>Market</h2>
+                        <div class="form-group">
+                            <label for="target-customers">Target customers</label>
+                            <input type="text" id="target-customers" class="form-control" required placeholder="Seed-stage founders, SMB clinics, campus teams">
+                        </div>
+                    </section>
+
+                    <section class="wizard-step" data-step="4" data-title="Revenue">
+                        <h2>Business model</h2>
+                        <div class="form-group">
+                            <label for="revenue-model">Revenue model</label>
+                            <select id="revenue-model" class="form-control">
+                                <option value="">Select model</option>
+                                <option value="SaaS Subscription">SaaS Subscription</option>
+                                <option value="Usage-Based Pricing">Usage-Based Pricing</option>
+                                <option value="Marketplace Commission">Marketplace Commission</option>
+                                <option value="Transaction Fee">Transaction Fee</option>
+                                <option value="Freemium">Freemium</option>
+                                <option value="Licensing">Licensing</option>
+                                <option value="Services plus Software">Services plus Software</option>
+                            </select>
+                        </div>
+                    </section>
+
+                    <section class="wizard-step" data-step="5" data-title="Team">
+                        <h2>Team</h2>
+                        <div class="form-group">
+                            <label for="team-size">Team size</label>
+                            <input type="number" id="team-size" class="form-control" placeholder="3" min="1">
+                        </div>
+                    </section>
+
+                    <section class="wizard-step" data-step="6" data-title="Funding">
+                        <h2>Funding</h2>
+                        <div class="form-group">
+                            <label for="funding-requirement">Funding requirement</label>
+                            <input type="text" id="funding-requirement" class="form-control" placeholder="INR 50,00,000 pre-seed">
+                        </div>
+                    </section>
+
+                    <section class="wizard-step" data-step="7" data-title="Review">
+                        <h2>Review</h2>
+                        <div id="review-panel" class="review-panel"></div>
+                        <div class="generate-panel">
+                            <p>Your inputs are ready. PunchStart will produce a complete validation report with scores, market sizing, competitor landscape, risks, roadmap, and pitch deck outline.</p>
+                            <button type="button" id="run-analysis-btn" class="btn btn-primary btn-lg">Generate Investor Report</button>
+                        </div>
+                    </section>
+
+                    <div class="wizard-actions">
+                        <button type="button" id="prev-step" class="btn btn-secondary">Back</button>
+                        <button type="button" id="next-step" class="btn btn-primary">Continue</button>
+                    </div>
+                    <p id="form-error" class="form-error" aria-live="polite"></p>
+                </form>
+            </section>
+
+             <div id="analysis-loading" class="loading-overlay hidden">
+                 <div class="loading-card">
+                     <div class="loading-logo-wrapper">
+                         <span class="brand-mark loading-brand-mark">
+                             <span>
+                                 <span class="p">P</span>
+                                 <span class="s">S</span>
+                             </span>
+                         </span>
+                         <div class="spinner-ring"></div>
+                     </div>
+                     <h2>Validating your idea</h2>
+                     <p style="font-size: 0.92rem; color: var(--muted); margin: -8px 0 24px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700;">Ideas deserve evidence.</p>
+                     
+                     <div class="pipeline-steps">
+                         <div class="pipeline-step" data-step="0">
+                             <span class="step-status"></span>
+                             <span class="step-text">Analyzing market opportunity...</span>
+                         </div>
+                         <div class="pipeline-step" data-step="1">
+                             <span class="step-status"></span>
+                             <span class="step-text">Evaluating competitors...</span>
+                         </div>
+                         <div class="pipeline-step" data-step="2">
+                             <span class="step-status"></span>
+                             <span class="step-text">Estimating TAM / SAM / SOM...</span>
+                         </div>
+                         <div class="pipeline-step" data-step="3">
+                             <span class="step-status"></span>
+                             <span class="step-text">Assessing investor readiness...</span>
+                         </div>
+                         <div class="pipeline-step" data-step="4">
+                             <span class="step-status"></span>
+                             <span class="step-text">Generating recommendations...</span>
+                         </div>
+                         <div class="pipeline-step" data-step="5">
+                             <span class="step-status"></span>
+                             <span class="step-text">Building investor report...</span>
+                         </div>
+                     </div>
+ 
+                     <div class="analysis-progress">
+                         <div id="loading-progress-bar" class="progress-bar-fill"></div>
+                     </div>
+                     <p id="loading-copy" class="loading-copy-text">Initializing pipeline...</p>
+                 </div>
+             </div>
+        </main>
+    </div>
+
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/common.js"></script>
+    <script src="../assets/js/analyze.js"></script>
+</body>
+</html>

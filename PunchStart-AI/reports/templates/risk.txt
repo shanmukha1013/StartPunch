@@ -1,0 +1,1 @@
+List the highest-impact risks with severity, likelihood, and a concrete mitigation plan. Avoid generic risks unless they are tied to the startup context.

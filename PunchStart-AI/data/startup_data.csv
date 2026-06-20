@@ -1,0 +1,10 @@
+field,description
+startup_name,Name used across reports and portfolio views.
+industry,Primary startup category used for benchmark sizing.
+problem,Customer pain and cost of inaction.
+solution,Product service or workflow proposed by the founder.
+target_customers,Initial customer segment and buyer persona.
+revenue_model,How the company captures value.
+team_size,Current founding or operating team size.
+funding_requirement,Capital ask or milestone budget.
+business_stage,Current progress from ideation to scaling.

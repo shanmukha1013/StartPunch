@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Founder Feed - PunchStart</title>
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/feed.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="../index.html" class="sidebar-logo"><span class="brand-mark"><span><span class="p">P</span><span class="s">S</span></span></span><span class="brand-punch">Punch</span><span class="brand-start">Start</span></a>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item"><span class="nav-icon">D</span>Dashboard</a>
+                <a href="analyze.html" class="nav-item"><span class="nav-icon">A</span>New Analysis</a>
+                <a href="feed.html" class="nav-item active"><span class="nav-icon">F</span>Founder Feed</a>
+                <a href="../index.html" class="nav-item" id="logout-link"><span class="nav-icon">O</span>Logout</a>
+            </nav>
+        </aside>
+
+        <main class="main-content feed-page">
+            <header class="page-header">
+                <div>
+                    <h1>Founder intelligence feed</h1>
+                    <p>Share progress, compare insights, track startup themes, and capture investor-ready thinking.</p>
+                </div>
+                <input type="search" id="feed-search" class="form-control" placeholder="Search feed">
+            </header>
+
+            <section class="feed-layout">
+                <div class="feed-main">
+                    <form id="post-form" class="composer panel">
+                        <input id="post-title" class="form-control" placeholder="What are you validating?">
+                        <textarea id="post-body" class="form-control" placeholder="Share an insight, question, customer signal, or market observation."></textarea>
+                        <button class="btn btn-primary" type="submit">Post Insight</button>
+                    </form>
+                    <div id="feed-container" class="idea-feed"></div>
+                </div>
+                <aside class="feed-sidebar">
+                    <section class="panel">
+                        <h2>Trending ideas</h2>
+                        <div id="trending-ideas" class="insight-list"></div>
+                    </section>
+                    <section class="panel">
+                        <h2>Investor tips</h2>
+                        <div class="insight-list">
+                            <p>Prove willingness to pay before asking for capital.</p>
+                            <p>Use one beachhead segment until retention is visible.</p>
+                            <p>Pitch the expensive problem, not the feature list.</p>
+                        </div>
+                    </section>
+                </aside>
+            </section>
+        </main>
+    </div>
+
+    <script src="../assets/js/common.js"></script>
+    <script src="../assets/js/feed.js"></script>
+</body>
+</html>

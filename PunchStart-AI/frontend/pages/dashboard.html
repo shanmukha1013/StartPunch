@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - PunchStart</title>
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="../index.html" class="sidebar-logo"><span class="brand-mark"><span><span class="p">P</span><span class="s">S</span></span></span><span class="brand-punch">Punch</span><span class="brand-start">Start</span></a>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item active"><span class="nav-icon">D</span>Dashboard</a>
+                <a href="analyze.html" class="nav-item"><span class="nav-icon">A</span>New Analysis</a>
+                <a href="feed.html" class="nav-item"><span class="nav-icon">F</span>Founder Feed</a>
+                <a href="../index.html" class="nav-item" id="logout-link"><span class="nav-icon">O</span>Logout</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <h1 class="greeting">Founder command center</h1>
+                    <p>Ideas deserve evidence. Track startup validations, saved reports, and portfolio readiness.</p>
+                </div>
+                <a class="btn btn-primary" href="analyze.html">New Analysis</a>
+            </header>
+
+            <section class="dashboard-grid stagger">
+                <article class="stat-card"><span>Total Analyses</span><strong id="total-analyses">0</strong><p>Reports generated</p></article>
+                <article class="stat-card"><span>Average Score</span><strong id="avg-score">0</strong><p>Startup viability</p></article>
+                <article class="stat-card"><span>Investor Ready</span><strong id="ready-count">0</strong><p>Reports above 75</p></article>
+                <article class="stat-card"><span>Saved Reports</span><strong id="saved-reports">0</strong><p>Available locally</p></article>
+
+                <section class="panel recent-analyses">
+                    <div class="panel-header">
+                        <div>
+                            <h2>Startup portfolio</h2>
+                            <p>Search and reopen your latest validation reports.</p>
+                        </div>
+                        <input id="dashboard-search" class="form-control" type="search" placeholder="Search reports">
+                    </div>
+                    <div id="portfolio-list" class="portfolio-list"></div>
+                    <div class="empty-state hidden" id="empty-recent">
+                        <h3>No analyses yet</h3>
+                        <p>Ideas deserve evidence. Create your first report to populate the dashboard.</p>
+                        <a href="analyze.html" class="btn btn-primary">Start Analysis</a>
+                    </div>
+                </section>
+
+                <section class="panel analytics-panel">
+                    <h2>Validation score trend</h2>
+                    <div class="chart-wrapper">
+                        <canvas id="score-trend-chart"></canvas>
+                    </div>
+                    <div id="score-bars" class="score-bars"></div>
+                </section>
+
+                <section class="panel industry-panel">
+                    <h2>Industry distribution</h2>
+                    <div class="chart-wrapper">
+                        <canvas id="industry-chart"></canvas>
+                    </div>
+                    <div id="industry-fallback" class="industry-fallback"></div>
+                </section>
+
+                <section class="panel comparison-panel">
+                    <h2>Startup comparison</h2>
+                    <div class="compare-controls">
+                        <select id="compare-a" class="form-control"></select>
+                        <select id="compare-b" class="form-control"></select>
+                    </div>
+                    <div id="comparison-output" class="comparison-output"></div>
+                </section>
+
+                <section class="panel notifications-panel">
+                    <h2>Founder feed</h2>
+                    <div id="notifications" class="notifications"></div>
+                </section>
+
+                <section class="panel quick-actions">
+                    <h2>Quick actions</h2>
+                    <a href="analyze.html" class="action-link">Validate a new idea</a>
+                    <a href="results.html" class="action-link">Open latest report</a>
+                    <a href="#comparison-output" class="action-link">Compare startups</a>
+                    <a href="feed.html" class="action-link">Browse founder feed</a>
+                </section>
+
+                <section class="panel insights-panel">
+                    <h2>Founder insights</h2>
+                    <div id="founder-insights" class="notifications"></div>
+                </section>
+
+                <section class="panel recommendations-panel">
+                    <h2>Strategic actions</h2>
+                    <div id="recommendations" class="notifications"></div>
+                </section>
+            </section>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../assets/js/common.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+</body>
+</html>
