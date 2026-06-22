@@ -339,7 +339,7 @@
 
 .reveal {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(10px);
 }
 
 .reveal.visible,
@@ -347,8 +347,18 @@
 .metric-grid.reveal {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 460ms ease, transform 460ms ease;
+  transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1), transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+/* Premium Staggered Entry Delays for report elements */
+#report-content > .reveal:nth-child(1) { transition-delay: 0ms; }
+#report-content > .reveal:nth-child(2) { transition-delay: 100ms; }
+#report-content > .reveal:nth-child(3) { transition-delay: 200ms; }
+#report-content > .reveal:nth-child(4) { transition-delay: 300ms; }
+#report-content > .reveal:nth-child(5) { transition-delay: 400ms; }
+#report-content > .reveal:nth-child(6) { transition-delay: 500ms; }
+#report-content > .reveal:nth-child(7) { transition-delay: 600ms; }
+#report-content > .reveal:nth-child(8) { transition-delay: 700ms; }
 
 .founder-notes {
   min-height: 150px;

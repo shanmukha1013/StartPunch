@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderReport(activeReport);
     bindReportActions(activeReport);
     animateCounters();
+    animateGauges();
     revealOnScroll();
 
     document.getElementById('logout-link')?.addEventListener('click', (event) => {
@@ -266,8 +267,8 @@ function scoreCircle(label, score, type) {
                         </linearGradient>
                     </defs>
                     <circle class="gauge-track" cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="8"></circle>
-                    <circle class="gauge-fill" cx="50" cy="50" r="40" fill="none" stroke="url(#score-grad-${type})" stroke-width="8" 
-                            stroke-dasharray="251.2" stroke-dashoffset="${251.2 - (251.2 * score) / 100}"
+                    <circle class="gauge-fill" data-gauge-score="${score}" cx="50" cy="50" r="40" fill="none" stroke="url(#score-grad-${type})" stroke-width="8" 
+                            stroke-dasharray="251.2" stroke-dashoffset="251.2"
                             stroke-linecap="round" transform="rotate(-90 50 50)"></circle>
                 </svg>
                 <div class="gauge-overlay">
@@ -505,6 +506,15 @@ function animateCounters() {
         };
         requestAnimationFrame(tick);
     });
+}
+
+function animateGauges() {
+    setTimeout(() => {
+        document.querySelectorAll('.gauge-fill').forEach(circle => {
+            const score = Number(circle.dataset.gaugeScore || 0);
+            circle.style.strokeDashoffset = 251.2 - (251.2 * score) / 100;
+        });
+    }, 100);
 }
 
 function revealOnScroll() {
