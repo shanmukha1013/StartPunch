@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'results.html';
         } catch (error) {
             console.error('Analysis failed:', error);
-            errorEl.textContent = 'The report could not be generated. Please check that the backend is running and try again.';
+            errorEl.textContent = `Analysis failed: ${error.message || 'Please check that the backend is running and try again.'}`;
         } finally {
             clearInterval(timer);
             loadingOverlay.classList.add('hidden');
