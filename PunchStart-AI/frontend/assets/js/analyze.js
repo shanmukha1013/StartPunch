@@ -113,7 +113,11 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'results.html';
         } catch (error) {
             console.error('Analysis failed:', error);
-            errorEl.textContent = `Analysis failed: ${error.message || 'Please check that the backend is running and try again.'}`;
+            let msg = error.message;
+            if (msg === 'Failed to fetch') {
+                msg = 'Failed to connect to the server. Please ensure the backend is running, or try disabling adblockers that might block the request.';
+            }
+            errorEl.textContent = `Analysis failed: ${msg}`;
         } finally {
             clearInterval(timer);
             loadingOverlay.classList.add('hidden');
