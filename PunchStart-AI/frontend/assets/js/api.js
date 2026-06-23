@@ -1,4 +1,4 @@
-const API_BASE_URL = localStorage.getItem('punchstart_api_url') || 'https://startpunch-production.up.railway.app';
+const API_BASE_URL = 'https://startpunch-production.up.railway.app';
 
 async function apiRequest(endpoint, method = 'GET', body = null) {
     const token = localStorage.getItem('auth_token');
