@@ -20,7 +20,7 @@ class AnalyzeRequest(BaseModel):
     business_stage: str = Field(default="", description="Current business stage")
 
 
-@router.post("/analyze")
+@router.post("/validate-startup")
 async def analyze_endpoint(request: AnalyzeRequest):
     """
     Accept startup details and return a full investor-grade report.

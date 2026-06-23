@@ -32,5 +32,5 @@ async function apiRequest(endpoint, method = 'GET', body = null) {
 }
 
 function runAnalysis(startupData) {
-    return apiRequest('/api/analyze', 'POST', startupData);
+    return apiRequest('/api/validate-startup', 'POST', startupData);
 }
