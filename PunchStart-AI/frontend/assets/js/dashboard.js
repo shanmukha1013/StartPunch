@@ -279,9 +279,9 @@ function renderComparison(reports) {
         return;
     }
 
-    const getTAMVal = (r) => r.tam_sam_som?.tam || r.marketSize?.tam || 'Not specified';
-    const getSAMVal = (r) => r.tam_sam_som?.sam || r.marketSize?.sam || 'Not specified';
-    const getSOMVal = (r) => r.tam_sam_som?.som || r.marketSize?.som || 'Not specified';
+    const getTAMVal = (r) => (r.tam_sam_som?.tam || r.marketSize?.tam || 'Not specified').replace(/\n/g, ' ');
+    const getSAMVal = (r) => (r.tam_sam_som?.sam || r.marketSize?.sam || 'Not specified').replace(/\n/g, ' ');
+    const getSOMVal = (r) => (r.tam_sam_som?.som || r.marketSize?.som || 'Not specified').replace(/\n/g, ' ');
     const getRiskText = (r) => {
         const risks = r.risk_matrix || r.risks || [];
         return risks[0]?.risk || 'Standard market risk';

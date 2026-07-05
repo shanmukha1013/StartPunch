@@ -282,9 +282,9 @@ function scoreCircle(label, score, type) {
 }
 
 function renderMarketProportions(report) {
-    const tamVal = report.marketSize.tam || 'INR 50,000 Cr';
-    const samVal = report.marketSize.sam || 'INR 10,000 Cr';
-    const somVal = report.marketSize.som || 'INR 500 Cr';
+    const tamVal = (report.marketSize.tam || 'INR 50,000 Cr').replace(/\n/g, ' ');
+    const samVal = (report.marketSize.sam || 'INR 10,000 Cr').replace(/\n/g, ' ');
+    const somVal = (report.marketSize.som || 'INR 500 Cr').replace(/\n/g, ' ');
 
     return `
         <article class="metric-card wide" style="min-height: auto; width: 100%; display: block; border-color: var(--line);">
