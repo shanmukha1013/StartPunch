@@ -211,8 +211,9 @@ textarea.form-control {
   display: grid;
   grid-template-columns: 248px minmax(0, 1fr);
   min-height: 100vh;
-  max-width: 1800px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: none;
+  margin: 0;
 }
 
 .sidebar {
@@ -332,6 +333,7 @@ textarea.form-control {
 
 .main-content {
   min-width: 0;
+  width: 100%;
   padding: 32px 40px;
   animation: pageRise 420ms ease both;
 }

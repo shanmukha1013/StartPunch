@@ -1,5 +1,5 @@
 .report-page {
-  max-width: 1320px;
+  max-width: none;
 }
 
 #report-content {
@@ -677,7 +677,7 @@
 
 .market-proportions-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 32px;
   margin: 24px 0;
 }
