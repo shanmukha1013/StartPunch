@@ -152,7 +152,7 @@ function renderReport(report) {
             <div>
                 <span class="eyebrow">Investor validation report</span>
                 <h1>${escapeHtml(report.startupName)}</h1>
-                <p style="font-size: 1.05rem; color: var(--gold); font-weight: 700; margin: 10px 0 16px; text-transform: uppercase; letter-spacing: 0.05em;">Ideas deserve evidence.</p>
+                <p style="font-size: 1.05rem; color: var(--signal-red); font-weight: 700; margin: 10px 0 16px; text-transform: uppercase; letter-spacing: 0.05em;">Ideas deserve evidence.</p>
                 <p>${escapeHtml(report.executiveSummary)}</p>
                 <div class="hero-meta">
                     <span>${escapeHtml(report.industry)}</span>
@@ -255,18 +255,18 @@ function bindReportActions(report) {
 }
 
 function scoreCircle(label, score, type) {
-    const color = score <= 40 ? 'var(--danger)' : score <= 70 ? 'var(--warning)' : 'var(--lime)';
+    const color = 'var(--signal-red)';
     return `
         <article class="score-card">
             <div class="svg-gauge-wrapper" style="--score:${score}; --ring-color:${color}">
                 <svg class="svg-gauge" viewBox="0 0 100 100">
                     <defs>
                         <linearGradient id="score-grad-${type}" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="${type === 'startup' ? '#EAB308' : '#3B82F6'}" />
-                            <stop offset="100%" stop-color="${type === 'startup' ? '#EF4444' : '#10B981'}" />
+                            <stop offset="0%" stop-color="#E02424" />
+                            <stop offset="100%" stop-color="#D1D5DB" />
                         </linearGradient>
                     </defs>
-                    <circle class="gauge-track" cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="8"></circle>
+                    <circle class="gauge-track" cx="50" cy="50" r="40" fill="none" stroke="rgba(209, 213, 219, 0.12)" stroke-width="8"></circle>
                     <circle class="gauge-fill" data-gauge-score="${score}" cx="50" cy="50" r="40" fill="none" stroke="url(#score-grad-${type})" stroke-width="8" 
                             stroke-dasharray="251.2" stroke-dashoffset="251.2"
                             stroke-linecap="round" transform="rotate(-90 50 50)"></circle>
@@ -327,10 +327,10 @@ function renderCompetitor(item) {
             <h3>${escapeHtml(item.name)}</h3>
             <p>${escapeHtml(item.positioning)}</p>
             <dl style="margin-top: 10px; display: grid; gap: 6px;">
-                <dt style="color: var(--gold); font-size: 0.76rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em;">Core Advantage</dt>
-                <dd style="margin: 0; color: #c5cfdd; font-size: 0.86rem;">${escapeHtml(item.advantage)}</dd>
-                <dt style="color: var(--blue); font-size: 0.76rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em;">Vulnerability to Exploit</dt>
-                <dd style="margin: 0; color: #c5cfdd; font-size: 0.86rem;">${escapeHtml(item.gap_to_exploit)}</dd>
+                <dt style="color: var(--signal-red); font-size: 0.76rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em;">Core Advantage</dt>
+                <dd style="margin: 0; color: var(--silver); font-size: 0.86rem;">${escapeHtml(item.advantage)}</dd>
+                <dt style="color: var(--silver); font-size: 0.76rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em;">Vulnerability to Exploit</dt>
+                <dd style="margin: 0; color: var(--silver); font-size: 0.86rem;">${escapeHtml(item.gap_to_exploit)}</dd>
             </dl>
         </article>
     `;

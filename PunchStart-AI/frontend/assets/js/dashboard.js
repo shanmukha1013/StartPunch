@@ -104,14 +104,14 @@ function renderCharts(reports) {
     }, {});
 
     if (window.Chart) {
-        const grid = 'rgba(255,255,255,.05)';
-        const text = '#94A3B8';
+        const grid = 'rgba(209, 213, 219, 0.1)';
+        const text = '#D1D5DB';
         const canvas = document.getElementById('score-trend-chart');
         if (canvas) {
             const ctx = canvas.getContext('2d');
             const gradient = ctx.createLinearGradient(0, 0, 0, 280);
-            gradient.addColorStop(0, 'rgba(234, 179, 8, 0.08)');
-            gradient.addColorStop(1, 'rgba(15, 12, 27, 0)');
+            gradient.addColorStop(0, 'rgba(224, 36, 36, 0.15)');
+            gradient.addColorStop(1, 'rgba(22, 23, 25, 0)');
 
             // Clean up existing chart instance if any
             const existingChart = Chart.getChart(canvas);
@@ -120,8 +120,8 @@ function renderCharts(reports) {
             // Highlight only the final score point
             const pointRadii = chartScores.map((_, i) => i === chartScores.length - 1 ? 6 : 0);
             const pointHoverRadii = chartScores.map((_, i) => i === chartScores.length - 1 ? 8 : 4);
-            const pointBackgrounds = chartScores.map((_, i) => i === chartScores.length - 1 ? '#EAB308' : 'rgba(234, 179, 8, 0.3)');
-            const pointBorderColors = chartScores.map((_, i) => i === chartScores.length - 1 ? '#FFFFFF' : 'rgba(234, 179, 8, 0.3)');
+            const pointBackgrounds = chartScores.map((_, i) => i === chartScores.length - 1 ? '#E02424' : 'rgba(224, 36, 36, 0.3)');
+            const pointBorderColors = chartScores.map((_, i) => i === chartScores.length - 1 ? '#D1D5DB' : 'rgba(209, 213, 219, 0.3)');
             const pointBorderWidths = chartScores.map((_, i) => i === chartScores.length - 1 ? 2 : 1);
 
             new Chart(canvas, {
@@ -132,7 +132,7 @@ function renderCharts(reports) {
                         if (args.index === 0) {
                             const chartCtx = chart.ctx;
                             chartCtx.save();
-                            chartCtx.shadowColor = 'rgba(234, 179, 8, 0.35)';
+                            chartCtx.shadowColor = 'rgba(224, 36, 36, 0.35)';
                             chartCtx.shadowBlur = 8;
                             chartCtx.shadowOffsetX = 0;
                             chartCtx.shadowOffsetY = 3;
@@ -149,7 +149,7 @@ function renderCharts(reports) {
                     datasets: [{
                         label: 'Validation Score',
                         data: chartScores,
-                        borderColor: '#EAB308',
+                        borderColor: '#E02424',
                         borderWidth: 3,
                         backgroundColor: gradient,
                         fill: true,
@@ -159,8 +159,8 @@ function renderCharts(reports) {
                         pointBorderWidth: pointBorderWidths,
                         pointRadius: pointRadii,
                         pointHoverRadius: pointHoverRadii,
-                        pointHoverBackgroundColor: '#EAB308',
-                        pointHoverBorderColor: '#FFFFFF',
+                        pointHoverBackgroundColor: '#E02424',
+                        pointHoverBorderColor: '#D1D5DB',
                         pointHoverBorderWidth: 2,
                     }]
                 },
@@ -171,10 +171,10 @@ function renderCharts(reports) {
                     plugins: {
                         legend: { display: false },
                         tooltip: {
-                            backgroundColor: '#1E1B2E',
-                            titleColor: '#EAB308',
-                            bodyColor: '#FFFFFF',
-                            borderColor: 'rgba(234, 179, 8, 0.3)',
+                            backgroundColor: '#161719',
+                            titleColor: '#E02424',
+                            bodyColor: '#D1D5DB',
+                            borderColor: 'rgba(209, 213, 219, 0.25)',
                             borderWidth: 1,
                             padding: 12,
                             cornerRadius: 8,
@@ -209,8 +209,8 @@ function renderCharts(reports) {
                     labels: indKeys.length ? indKeys : ['Validate Idea'],
                     datasets: [{
                         data: indVals.length ? indVals : [1],
-                        backgroundColor: indVals.length ? ['#EAB308', '#3B82F6', '#F59E0B', '#8B5CF6', '#EF4444'] : ['rgba(255,255,255,0.08)'],
-                        borderColor: 'rgba(15, 12, 27, 0.8)',
+                        backgroundColor: indVals.length ? ['#E02424', '#D1D5DB', 'rgba(224, 36, 36, 0.65)', 'rgba(209, 213, 219, 0.55)', 'rgba(224, 36, 36, 0.35)'] : ['rgba(209, 213, 219, 0.15)'],
+                        borderColor: '#161719',
                         borderWidth: 2
                     }]
                 },

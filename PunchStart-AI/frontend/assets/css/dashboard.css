@@ -15,7 +15,7 @@
   padding: 24px 28px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(18, 24, 36, 0.78);
+  background: var(--charcoal);
   box-shadow: var(--shadow);
 }
 
@@ -32,6 +32,7 @@
   margin: 8px 0 4px;
   font-size: 2.3rem;
   line-height: 1;
+  color: var(--silver);
 }
 
 .stat-card p,
@@ -85,11 +86,16 @@
 
 .panel {
   padding: 28px 32px;
+  background: var(--charcoal);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
 .panel h2 {
   margin: 0 0 18px;
   font-size: 1.18rem;
+  color: var(--silver);
 }
 
 .chart-wrapper {
@@ -125,13 +131,13 @@
   padding: 14px 18px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--charcoal);
   transition: background 200ms ease, border-color 200ms ease, transform 200ms ease;
 }
 
 .portfolio-row:hover {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(234, 179, 8, 0.3);
+  background: rgba(224, 36, 36, 0.04);
+  border-color: var(--signal-red);
   transform: translateY(-1px);
 }
 
@@ -151,7 +157,7 @@
 .portfolio-score {
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--gold);
+  color: var(--signal-red);
   text-align: right;
 }
 
@@ -170,7 +176,7 @@
 }
 
 .portfolio-row:hover .btn-text {
-  color: var(--gold);
+  color: var(--signal-red);
 }
 
 .empty-state {
@@ -180,6 +186,12 @@
   padding: 22px;
   border: 1px dashed var(--line);
   border-radius: var(--radius);
+  background: var(--charcoal);
+}
+
+.empty-state h3 {
+  margin: 0;
+  color: var(--silver);
 }
 
 .score-bars {
@@ -202,7 +214,7 @@
   padding: 12px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(255,255,255,.04);
+  background: var(--charcoal);
 }
 
 .industry-fallback span {
@@ -210,7 +222,7 @@
 }
 
 .industry-fallback strong {
-  color: var(--gold);
+  color: var(--signal-red);
 }
 
 .score-bar {
@@ -229,7 +241,7 @@
   width: 100%;
   min-height: 8px;
   border-radius: 6px 6px 2px 2px;
-  background: linear-gradient(180deg, var(--gold), var(--lime));
+  background: var(--signal-red);
   transform-origin: bottom;
   animation: growBar 700ms ease both;
 }
@@ -255,16 +267,16 @@
   padding: 20px 24px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(8, 11, 18, 0.42);
-  color: #e2e8f0;
+  background: var(--charcoal);
+  color: var(--silver);
   line-height: 1.8;
   font-size: 0.95rem;
   transition: border-color 200ms ease, background 200ms ease;
 }
 
 .notifications p:hover {
-  border-color: rgba(234, 179, 8, 0.25);
-  background: rgba(8, 11, 18, 0.55);
+  border-color: var(--signal-red);
+  background: rgba(224, 36, 36, 0.04);
 }
 
 .action-link {
@@ -272,20 +284,22 @@
   padding: 16px 20px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(8, 11, 18, 0.42);
-  color: #d7deea;
+  background: var(--charcoal);
+  color: var(--silver);
   font-size: 0.92rem;
   transition: border-color 200ms ease, background 200ms ease;
+}
+
+.action-link:hover {
+  border-color: var(--signal-red);
+  background: rgba(224, 36, 36, 0.04);
+  color: var(--silver);
 }
 
 .quick-actions {
   display: grid;
   align-content: start;
   gap: 10px;
-}
-
-.action-link:hover {
-  border-color: rgba(234, 179, 8, 0.55);
 }
 
 .compare-controls {
@@ -306,18 +320,19 @@
   padding: 24px 14px;
   border: 1px dashed var(--line);
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--charcoal);
 }
 
 .compare-icon {
   font-size: 2.2rem;
-  color: var(--blue);
+  color: var(--signal-red);
   margin-bottom: 12px;
 }
 
 .compare-empty-state h3 {
   margin: 0 0 6px;
   font-size: 1.05rem;
+  color: var(--silver);
 }
 
 .compare-empty-state p {
@@ -339,12 +354,12 @@
 .comparison-row {
   display: grid;
   grid-template-columns: 160px 1fr 1fr;
-  background: rgba(23, 19, 39, 0.45);
+  background: var(--charcoal);
   font-size: 0.94rem;
 }
 
 .comparison-header-row {
-  background: rgba(29, 24, 51, 0.9);
+  background: var(--charcoal);
   font-weight: 700;
   color: var(--text);
   border-bottom: 1px solid var(--line);
@@ -362,7 +377,7 @@
 .metric-label {
   color: var(--muted);
   font-weight: 700;
-  background: rgba(8, 11, 18, 0.25);
+  background: rgba(209, 213, 219, 0.03);
   border-right: 1px solid var(--line);
   font-size: 0.85rem;
   text-transform: uppercase;
@@ -378,27 +393,27 @@
 
 .val-a,
 .val-b {
-  color: #d7deea;
+  color: var(--silver);
   font-size: 0.92rem;
 }
 
 .val-a.winner,
 .val-b.winner {
-  color: var(--gold);
+  color: var(--signal-red);
   font-weight: 800;
 }
 
 .winner-analysis-card {
   padding: 18px 22px;
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  border: 1px solid rgba(224, 36, 36, 0.3);
   border-radius: var(--radius);
-  background: rgba(59, 130, 246, 0.04);
+  background: rgba(224, 36, 36, 0.05);
 }
 
 .winner-analysis-card h4 {
   margin: 0 0 6px;
   font-size: 0.95rem;
-  color: var(--blue);
+  color: var(--signal-red);
   font-weight: 800;
 }
 
@@ -406,7 +421,7 @@
   margin: 0;
   font-size: 0.88rem;
   line-height: 1.6;
-  color: #d7deea;
+  color: var(--silver);
 }
 
 .founder-insights {
@@ -432,18 +447,18 @@
 .insight-swot-block {
   padding: 24px 28px;
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--charcoal);
   border: 1px solid var(--line);
 }
 
 .insight-swot-block.strength {
-  border-color: rgba(34, 197, 94, 0.18);
-  background: rgba(34, 197, 94, 0.02);
+  border-color: rgba(209, 213, 219, 0.25);
+  background: var(--charcoal);
 }
 
 .insight-swot-block.weakness {
-  border-color: rgba(239, 68, 68, 0.18);
-  background: rgba(239, 68, 68, 0.02);
+  border-color: rgba(224, 36, 36, 0.25);
+  background: rgba(224, 36, 36, 0.04);
 }
 
 .insight-swot-block h5 {
@@ -454,14 +469,14 @@
   letter-spacing: 0.08em;
 }
 
-.insight-swot-block.strength h5 { color: var(--lime); }
-.insight-swot-block.weakness h5 { color: var(--danger); }
+.insight-swot-block.strength h5 { color: var(--silver); }
+.insight-swot-block.weakness h5 { color: var(--signal-red); }
 
 .insight-swot-block ul {
   margin: 0;
   padding-left: 20px;
   font-size: 0.94rem;
-  color: #c5cfdd;
+  color: var(--silver);
   display: grid;
   gap: 12px;
   line-height: 1.8;
@@ -470,15 +485,15 @@
 .insight-action-card {
   padding: 22px 26px;
   border-radius: var(--radius);
-  background: rgba(234, 179, 8, 0.04);
-  border: 1px solid rgba(234, 179, 8, 0.2);
+  background: rgba(224, 36, 36, 0.05);
+  border: 1px solid rgba(224, 36, 36, 0.25);
   margin-top: 8px;
 }
 
 .insight-action-card h5 {
   margin: 0 0 10px;
   font-size: 0.88rem;
-  color: var(--gold);
+  color: var(--signal-red);
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -488,7 +503,7 @@
   margin: 0;
   font-size: 0.95rem;
   line-height: 1.8;
-  color: var(--text);
+  color: var(--silver);
   font-weight: 500;
 }
 
@@ -570,7 +585,7 @@
   .comparison-header-row > div:first-child,
   .comparison-row > div:first-child {
     grid-column: span 2;
-    background: rgba(8, 11, 18, 0.4);
+    background: rgba(209, 213, 219, 0.04);
     border-right: 0;
     border-bottom: 1px solid var(--line);
   }

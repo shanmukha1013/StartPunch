@@ -1,24 +1,51 @@
 :root {
-  --bg: #0F0C1B;
-  --bg-soft: #141025;
-  --surface: rgba(23, 19, 39, 0.82);
-  --surface-strong: #1D1833;
-  --line: rgba(255, 255, 255, 0.08);
-  --text: #F8FAFC;
-  --muted: #94A3B8;
-  --subtle: #64748b;
-  --gold: #EAB308;
-  --lime: #22C55E;
-  --danger: #EF4444;
-  --warning: #F59E0B;
-  --blue: #3B82F6;
-  --teal: var(--lime);
-  --green: var(--lime);
-  --amber: var(--warning);
-  --rose: var(--danger);
-  --violet: #8b5cf6;
-  --shadow: 0 22px 70px rgba(0, 0, 0, 0.42);
-  --glow: 0 0 0 1px rgba(234, 179, 8, 0.16), 0 18px 60px rgba(234, 179, 8, 0.08);
+  /* ==========================================================================
+     STRICT 3-COLOR SYSTEM
+     - Charcoal Gray (60%): Primary backgrounds, navigation, cards, containers, structural elements.
+     - Moonlit Silver (30%): Text, borders, dividers, secondary surfaces, icons, subtle visual details.
+     - Signal Red (10%): Primary buttons, active states, important actions, highlights, selected elements.
+     ========================================================================== */
+  --charcoal: #161719;
+  --silver: #D1D5DB;
+  --signal-red: #E02424;
+
+  /* RGB Triplet definitions for strictly approved opacity variations */
+  --charcoal-rgb: 22, 23, 25;
+  --silver-rgb: 209, 213, 219;
+  --signal-red-rgb: 224, 36, 36;
+
+  /* Semantic Structural Tokens */
+  --bg: #161719;
+  --bg-soft: #161719;
+  --surface: #161719;
+  --surface-strong: #161719;
+  --line: rgba(209, 213, 219, 0.16);
+  --border: rgba(209, 213, 219, 0.22);
+  --border-active: #E02424;
+  --text: #D1D5DB;
+  --muted: rgba(209, 213, 219, 0.70);
+  --subtle: rgba(209, 213, 219, 0.45);
+
+  /* Semantic Action Tokens */
+  --primary: #E02424;
+  --primary-hover: #E02424;
+  --primary-text: #D1D5DB;
+
+  /* Strict Compatibility Aliases */
+  --gold: #E02424;
+  --lime: #D1D5DB;
+  --danger: #E02424;
+  --warning: #E02424;
+  --blue: #D1D5DB;
+  --teal: #D1D5DB;
+  --green: #D1D5DB;
+  --amber: #E02424;
+  --rose: #E02424;
+  --violet: #D1D5DB;
+
+  /* Elevation & Glows (strictly Charcoal and Signal Red opacities) */
+  --shadow: 0 12px 36px rgba(22, 23, 25, 0.95);
+  --glow: 0 0 0 1px rgba(224, 36, 36, 0.4), 0 8px 24px rgba(224, 36, 36, 0.2);
   --radius: 8px;
   --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
@@ -32,10 +59,7 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background:
-    radial-gradient(circle at 12% 0%, rgba(234, 179, 8, 0.13), transparent 30%),
-    radial-gradient(circle at 88% 8%, rgba(59, 130, 246, 0.11), transparent 27%),
-    linear-gradient(135deg, #0F0C1B 0%, #121025 52%, #0b0915 100%);
+  background: var(--charcoal);
   color: var(--text);
   font-family: var(--font);
   font-size: 16px;
@@ -61,10 +85,9 @@ body::before {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+    linear-gradient(rgba(209, 213, 219, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(209, 213, 219, 0.02) 1px, transparent 1px);
   background-size: 44px 44px;
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,.62), transparent 72%);
 }
 
 a {
@@ -108,38 +131,57 @@ button {
   border-radius: var(--radius);
   border: 1px solid var(--line);
   color: var(--text);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(209, 213, 219, 0.05);
   cursor: pointer;
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  box-shadow: none;
   transition: transform 220ms cubic-bezier(.2,.8,.2,1), border-color 220ms ease, background 220ms ease, box-shadow 220ms ease;
   white-space: nowrap;
 }
 
 .btn:hover {
-  transform: translateY(-3px);
-  border-color: rgba(234, 179, 8, 0.42);
-  box-shadow: var(--glow);
+  transform: translateY(-2px);
+  border-color: var(--signal-red);
+  color: var(--silver);
 }
 
 .btn:active {
-  transform: scale(.97);
+  transform: scale(.98);
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #FDE68A 0%, var(--gold) 52%, #A16207 100%);
-  color: #171006;
-  border-color: transparent;
-  font-weight: 800;
+  background: var(--signal-red);
+  color: var(--silver);
+  border: 1px solid var(--signal-red);
+  font-weight: 700;
+}
+
+.btn-primary:hover {
+  background: var(--signal-red);
+  border-color: var(--silver);
+  box-shadow: 0 0 16px rgba(224, 36, 36, 0.35);
 }
 
 .btn-secondary {
-  background: rgba(148, 163, 184, 0.1);
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--silver);
+}
+
+.btn-secondary:hover {
+  border-color: var(--silver);
+  background: rgba(209, 213, 219, 0.08);
 }
 
 .btn-text {
   min-height: 34px;
   padding: 6px 10px;
   color: var(--muted);
+  background: transparent;
+  border: none;
+}
+
+.btn-text:hover {
+  color: var(--signal-red);
   background: transparent;
 }
 
@@ -160,7 +202,7 @@ button {
 }
 
 .form-group label {
-  color: #d7deea;
+  color: var(--silver);
   font-size: 0.86rem;
   font-weight: 700;
 }
@@ -171,15 +213,29 @@ button {
   padding: 11px 12px;
   border-radius: var(--radius);
   border: 1px solid var(--line);
-  background: rgba(8, 11, 18, 0.72);
+  background: var(--charcoal);
   color: var(--text);
   outline: none;
-  transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.form-control::placeholder {
+  color: var(--subtle);
 }
 
 .form-control:focus {
-  border-color: rgba(234, 179, 8, 0.7);
-  box-shadow: 0 0 0 3px rgba(234, 179, 8, 0.12);
+  border-color: var(--signal-red);
+  box-shadow: 0 0 0 2px rgba(224, 36, 36, 0.2);
+}
+
+select.form-control {
+  background-color: var(--charcoal);
+  color: var(--silver);
+}
+
+select.form-control option {
+  background-color: var(--charcoal);
+  color: var(--silver);
 }
 
 textarea.form-control {
@@ -191,9 +247,8 @@ textarea.form-control {
 .panel {
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: var(--surface);
+  background: var(--charcoal);
   box-shadow: var(--shadow);
-  backdrop-filter: blur(18px);
   transition: transform 260ms cubic-bezier(.2,.8,.2,1), border-color 260ms ease, box-shadow 260ms ease;
 }
 
@@ -202,9 +257,8 @@ textarea.form-control {
 .stat:hover,
 .feature-card:hover,
 .step:hover {
-  transform: translateY(-6px);
-  border-color: rgba(234, 179, 8, 0.22);
-  box-shadow: var(--glow);
+  transform: translateY(-4px);
+  border-color: rgba(209, 213, 219, 0.35);
 }
 
 .app-container {
@@ -214,6 +268,7 @@ textarea.form-control {
   width: 100%;
   max-width: none;
   margin: 0;
+  background: var(--charcoal);
 }
 
 .sidebar {
@@ -222,8 +277,7 @@ textarea.form-control {
   height: 100vh;
   padding: 22px 14px;
   border-right: 1px solid var(--line);
-  background: rgba(15, 12, 27, 0.78);
-  backdrop-filter: blur(18px);
+  background: var(--charcoal);
 }
 
 .sidebar-header {
@@ -250,38 +304,35 @@ textarea.form-control {
   place-items: center;
   width: 34px;
   height: 34px;
-  border: 1px solid rgba(255,255,255,.12);
+  border: 1px solid rgba(209, 213, 219, 0.2);
   border-radius: var(--radius);
-  background: linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.02));
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 12px 40px rgba(0,0,0,.35);
+  background: var(--charcoal);
+  box-shadow: 0 4px 12px rgba(22, 23, 25, 0.5);
   transition: transform 320ms cubic-bezier(.34, 1.56, .64, 1), box-shadow 320ms ease, border-color 320ms ease;
 }
 
 .logo:hover .brand-mark,
 .sidebar-logo:hover .brand-mark,
 .logo-text:hover .brand-mark {
-  transform: translateY(-2px) scale(1.06) rotate(4deg);
-  border-color: rgba(234, 179, 8, 0.42);
-  box-shadow: 
-    inset 0 1px 0 rgba(255,255,255,.15), 
-    0 12px 40px rgba(0,0,0,.45),
-    0 0 18px rgba(234, 179, 8, 0.4);
+  transform: translateY(-2px) scale(1.05);
+  border-color: var(--signal-red);
+  box-shadow: 0 0 16px rgba(224, 36, 36, 0.3);
 }
 
 .brand-mark .p {
-  color: var(--gold);
+  color: var(--signal-red);
 }
 
 .brand-mark .s {
-  color: #FFFFFF;
+  color: var(--silver);
 }
 
 .brand-punch {
-  color: #EAB308;
+  color: var(--signal-red);
 }
 
 .brand-start {
-  color: #F8FAFC;
+  color: var(--silver);
 }
 
 .sidebar-nav {
@@ -301,14 +352,16 @@ textarea.form-control {
   transition: background 220ms ease, color 220ms ease, transform 220ms ease;
 }
 
-.nav-item:hover,
-.nav-item.active {
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.07);
+.nav-item:hover {
+  color: var(--silver);
+  background: rgba(209, 213, 219, 0.06);
+  transform: translateX(3px);
 }
 
-.nav-item:hover {
-  transform: translateX(3px);
+.nav-item.active {
+  color: var(--silver);
+  background: rgba(224, 36, 36, 0.12);
+  border-left: 3px solid var(--signal-red);
 }
 
 .nav-icon {
@@ -317,24 +370,29 @@ textarea.form-control {
   height: 22px;
   place-items: center;
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--gold);
+  background: rgba(209, 213, 219, 0.08);
+  color: var(--silver);
   font-size: 0.75rem;
   font-weight: 900;
-  transition: transform 220ms ease, box-shadow 220ms ease, color 220ms ease;
+  transition: transform 220ms ease, background 220ms ease, color 220ms ease;
 }
 
-.nav-item:hover .nav-icon,
-.nav-item.active .nav-icon {
-  color: var(--lime);
+.nav-item:hover .nav-icon {
+  color: var(--silver);
   transform: scale(1.05);
-  box-shadow: 0 0 22px rgba(234, 179, 8, 0.16);
+}
+
+.nav-item.active .nav-icon {
+  background: var(--signal-red);
+  color: var(--silver);
+  transform: scale(1.05);
 }
 
 .main-content {
   min-width: 0;
   width: 100%;
   padding: 32px 40px;
+  background: var(--charcoal);
   animation: pageRise 420ms ease both;
 }
 
@@ -353,6 +411,7 @@ textarea.form-control {
   font-size: 32px;
   line-height: 1.2;
   letter-spacing: -0.02em;
+  color: var(--silver);
 }
 
 .page-header p {
@@ -365,8 +424,8 @@ textarea.form-control {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 3px solid rgba(255, 255, 255, 0.13);
-  border-top-color: var(--gold);
+  border: 3px solid rgba(209, 213, 219, 0.15);
+  border-top-color: var(--signal-red);
   animation: spin 900ms linear infinite;
 }
 
@@ -381,8 +440,7 @@ textarea.form-control {
   top: 0;
   z-index: 10;
   border-bottom: 1px solid var(--line);
-  background: rgba(15, 12, 27, 0.76);
-  backdrop-filter: blur(18px);
+  background: var(--charcoal);
 }
 
 .landing-nav {
@@ -398,6 +456,7 @@ textarea.form-control {
   align-items: center;
   padding: 72px 0 36px;
   text-align: center;
+  background: var(--charcoal);
 }
 
 .hero-title {
@@ -406,12 +465,13 @@ textarea.form-control {
   font-size: clamp(2.6rem, 7vw, 6.6rem);
   line-height: 0.95;
   letter-spacing: 0;
+  color: var(--silver);
 }
 
 .hero-subtitle {
   max-width: 620px;
   margin: 28px auto;
-  color: #c5cfdd;
+  color: var(--signal-red);
   font-size: clamp(1rem, 2vw, 1.25rem);
   line-height: 1.75;
 }
@@ -436,9 +496,8 @@ textarea.form-control {
   padding: 18px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025));
+  background: var(--charcoal);
   box-shadow: var(--shadow);
-  backdrop-filter: blur(18px);
 }
 
 .preview-card span,
@@ -452,10 +511,11 @@ textarea.form-control {
   margin: 14px 0 8px;
   font-size: clamp(1.45rem, 3vw, 2.4rem);
   line-height: 1;
+  color: var(--silver);
 }
 
 .score-preview strong {
-  color: var(--gold);
+  color: var(--signal-red);
 }
 
 .hero-stats,
@@ -473,7 +533,7 @@ textarea.form-control {
 .cta-section {
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(18, 24, 36, 0.72);
+  background: var(--charcoal);
   padding: 22px;
 }
 
@@ -481,6 +541,7 @@ textarea.form-control {
   display: block;
   font-size: 1.65rem;
   font-weight: 900;
+  color: var(--silver);
 }
 
 .stat-label,
@@ -494,11 +555,13 @@ textarea.form-control {
 .how-it-works,
 .cta-section {
   padding: 36px 0;
+  background: var(--charcoal);
 }
 
 .section-title {
   margin: 0 0 18px;
   font-size: clamp(1.6rem, 3vw, 2.3rem);
+  color: var(--silver);
 }
 
 .feature-icon,
@@ -508,14 +571,17 @@ textarea.form-control {
   height: 36px;
   place-items: center;
   border-radius: var(--radius);
-  background: rgba(234, 179, 8, 0.13);
-  color: var(--gold);
+  background: rgba(224, 36, 36, 0.12);
+  color: var(--signal-red);
   font-weight: 900;
+  border: 1px solid rgba(224, 36, 36, 0.3);
 }
 
 .landing-footer {
   padding: 30px 0;
   border-top: 1px solid var(--line);
+  background: var(--charcoal);
+  color: var(--muted);
 }
 
 @media (max-width: 860px) {
@@ -527,6 +593,8 @@ textarea.form-control {
     position: static;
     height: auto;
     padding: 14px;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
   }
 
   .sidebar-nav {
@@ -623,8 +691,7 @@ textarea.form-control {
 .command-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(5, 4, 11, .72);
-  backdrop-filter: blur(16px);
+  background: rgba(22, 23, 25, 0.88);
 }
 
 .command-panel {
@@ -633,8 +700,8 @@ textarea.form-control {
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 12px;
-  background: rgba(23, 19, 39, .94);
-  box-shadow: 0 30px 90px rgba(0,0,0,.55);
+  background: var(--charcoal);
+  box-shadow: var(--shadow);
   animation: pageRise 260ms ease both;
 }
 
@@ -656,12 +723,16 @@ textarea.form-control {
   font-size: 1rem;
 }
 
+.command-input::placeholder {
+  color: var(--subtle);
+}
+
 .command-input-row kbd {
   padding: 4px 7px;
   border: 1px solid var(--line);
   border-radius: 6px;
   color: var(--muted);
-  background: rgba(255,255,255,.05);
+  background: rgba(209, 213, 219, 0.06);
   font-size: .76rem;
 }
 
@@ -680,7 +751,7 @@ textarea.form-control {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--subtle);
-  border-top: 1px solid rgba(255,255,255,0.02);
+  border-top: 1px solid rgba(209, 213, 219, 0.06);
 }
 
 .command-group-header:first-child {
@@ -701,8 +772,8 @@ textarea.form-control {
 }
 
 .command-item.selected {
-  background: rgba(234, 179, 8, .12);
-  border-left: 2px solid var(--gold);
+  background: rgba(224, 36, 36, 0.12);
+  border-left: 2px solid var(--signal-red);
   border-radius: 0 var(--radius) var(--radius) 0;
 }
 
@@ -713,6 +784,7 @@ textarea.form-control {
 
 .command-item-main strong {
   font-size: 0.95rem;
+  color: var(--silver);
 }
 
 .command-item-main span {
@@ -722,10 +794,10 @@ textarea.form-control {
 
 .command-item-meta kbd {
   padding: 3px 5px;
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid var(--line);
   border-radius: 4px;
   color: var(--muted);
-  background: rgba(255,255,255,0.03);
+  background: rgba(209, 213, 219, 0.04);
   font-size: 0.7rem;
 }
 
@@ -740,5 +812,3 @@ textarea.form-control {
   color: var(--muted);
   font-size: .88rem;
 }
-
-

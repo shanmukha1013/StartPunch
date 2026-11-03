@@ -7,7 +7,7 @@
   padding: 12px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(18, 24, 36, 0.72);
+  background: var(--charcoal);
 }
 
 .wizard-status span,
@@ -20,28 +20,33 @@
   font-size: 0.82rem;
 }
 
+.wizard-status strong {
+  color: var(--silver);
+}
+
 .wizard-shell {
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(23, 19, 39, 0.76);
+  background: var(--charcoal);
   box-shadow: var(--shadow);
   overflow: hidden;
 }
 
 .progress-track {
   height: 5px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(209, 213, 219, 0.1);
 }
 
 .progress-fill {
   width: 12.5%;
   height: 100%;
-  background: linear-gradient(90deg, var(--gold), var(--lime), var(--warning));
+  background: var(--signal-red);
   transition: width 220ms ease;
 }
 
 .analysis-form {
   padding: 28px;
+  background: var(--charcoal);
 }
 
 .wizard-step {
@@ -57,6 +62,7 @@
 .wizard-step h2 {
   margin: 0 0 22px;
   font-size: 1.45rem;
+  color: var(--silver);
 }
 
 .form-row {
@@ -76,7 +82,7 @@
 .form-error {
   min-height: 22px;
   margin: 12px 0 0;
-  color: var(--danger);
+  color: var(--signal-red);
 }
 
 .review-panel {
@@ -90,7 +96,7 @@
   padding: 14px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(8, 11, 18, 0.42);
+  background: var(--charcoal);
 }
 
 .review-item span {
@@ -105,6 +111,7 @@
 .review-item strong {
   display: block;
   overflow-wrap: anywhere;
+  color: var(--silver);
 }
 
 .generate-panel {
@@ -114,7 +121,7 @@
 }
 
 .generate-panel p {
-  color: #c5cfdd;
+  color: var(--silver);
   font-size: 1.05rem;
 }
 
@@ -125,8 +132,7 @@
   display: grid;
   place-items: center;
   padding: 20px;
-  background: rgba(15, 12, 27, 0.84);
-  backdrop-filter: blur(20px);
+  background: rgba(22, 23, 25, 0.92);
 }
 
 .loading-card {
@@ -134,9 +140,13 @@
   padding: 28px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: var(--surface-strong);
+  background: var(--charcoal);
   text-align: center;
   box-shadow: var(--shadow);
+}
+
+.loading-card h2 {
+  color: var(--silver);
 }
 
 .loading-logo-wrapper {
@@ -154,9 +164,9 @@
   height: 50px;
   border-radius: 12px;
   font-size: 1.2rem;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 25px rgba(234, 179, 8, 0.25);
+  background: var(--charcoal);
+  border: 1px solid rgba(209, 213, 219, 0.2);
+  box-shadow: 0 0 20px rgba(224, 36, 36, 0.25);
   animation: logoPulse 1.8s infinite ease-in-out;
   display: inline-grid;
   place-items: center;
@@ -164,21 +174,21 @@
 }
 
 .loading-brand-mark .p {
-  color: var(--gold);
+  color: var(--signal-red);
 }
 
 .loading-brand-mark .s {
-  color: #FFFFFF;
+  color: var(--silver);
 }
 
 @keyframes logoPulse {
   0%, 100% {
     transform: scale(1);
-    box-shadow: 0 0 20px rgba(234, 179, 8, 0.2);
+    box-shadow: 0 0 16px rgba(224, 36, 36, 0.2);
   }
   50% {
     transform: scale(1.08);
-    box-shadow: 0 0 35px rgba(234, 179, 8, 0.4), 0 0 15px rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 28px rgba(224, 36, 36, 0.4);
   }
 }
 
@@ -188,8 +198,8 @@
   height: 70px;
   border-radius: 50%;
   border: 2px solid transparent;
-  border-top-color: var(--blue);
-  border-bottom-color: var(--gold);
+  border-top-color: var(--signal-red);
+  border-bottom-color: var(--silver);
   animation: spin 1.4s linear infinite;
 }
 
@@ -209,12 +219,13 @@
   opacity: 0.35;
   transition: opacity 300ms ease, transform 300ms ease;
   font-size: 0.92rem;
+  color: var(--muted);
 }
 
 .pipeline-step.active {
   opacity: 1;
   transform: translateX(4px);
-  color: var(--text);
+  color: var(--silver);
 }
 
 .pipeline-step.completed {
@@ -226,19 +237,19 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(209, 213, 219, 0.2);
   transition: background 300ms ease, box-shadow 300ms ease;
 }
 
 .pipeline-step.active .step-status {
-  background: var(--blue);
-  box-shadow: 0 0 8px var(--blue);
+  background: var(--signal-red);
+  box-shadow: 0 0 8px var(--signal-red);
   animation: pulseDot 1.2s infinite ease-in-out;
 }
 
 .pipeline-step.completed .step-status {
-  background: var(--lime);
-  box-shadow: 0 0 6px var(--lime);
+  background: var(--silver);
+  box-shadow: 0 0 6px var(--silver);
 }
 
 @keyframes pulseDot {
@@ -251,14 +262,14 @@
   margin-top: 18px;
   overflow: hidden;
   border-radius: 999px;
-  background: rgba(255,255,255,.06);
+  background: rgba(209, 213, 219, 0.1);
   position: relative;
 }
 
 .progress-bar-fill {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, var(--blue), var(--gold), var(--lime));
+  background: var(--signal-red);
   border-radius: inherit;
   transition: width 600ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -270,8 +281,8 @@
 }
 
 .loading-card.complete {
-  border-color: rgba(34,197,94,.45);
-  box-shadow: 0 0 0 1px rgba(34,197,94,.16), 0 30px 90px rgba(34,197,94,.12);
+  border-color: var(--signal-red);
+  box-shadow: 0 0 24px rgba(224, 36, 36, 0.25);
 }
 
 .loading-card.complete .spinner-ring {
@@ -279,9 +290,16 @@
 }
 
 .loading-card.complete .loading-brand-mark {
-  background: var(--lime);
-  border-color: transparent;
-  box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+  background: var(--signal-red);
+  border-color: var(--signal-red);
+}
+
+.loading-card.complete .loading-brand-mark .p {
+  color: var(--charcoal);
+}
+
+.loading-card.complete .loading-brand-mark .s {
+  color: var(--silver);
 }
 
 @keyframes liftIn {
