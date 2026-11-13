@@ -1,45 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In - PunchStart</title>
-    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/login.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sign in to StartPunch — startup intelligence and a founder network.">
+  <meta name="theme-color" content="#F5D90A">
+  <title>Sign in · StartPunch</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="../assets/css/app.css">
 </head>
-<body class="auth-page">
-    <main class="auth-container">
-        <section class="auth-copy">
-            <a href="../index.html" class="logo-text"><span class="brand-mark"><span><span class="p">P</span><span class="s">S</span></span></span><span class="brand-punch">Punch</span><span class="brand-start">Start</span></a>
-            <h1>Validate before you build.</h1>
-            <p>Enter your founder profile to access reports, portfolio analytics, and the community feed on this device.</p>
-        </section>
-
-        <section class="auth-card">
-            <div id="login-form-step" class="auth-step">
-                <h2>Founder workspace</h2>
-                <div class="form-group">
-                    <label for="founder-name">Founder name</label>
-                    <input type="text" id="founder-name" class="form-control" placeholder="Your name" autocomplete="name">
-                </div>
-                <div class="form-group">
-                    <label for="founder-email">Email</label>
-                    <input type="email" id="founder-email" class="form-control" placeholder="founder@company.com" autocomplete="email">
-                </div>
-                <button id="create-session-btn" class="btn btn-primary btn-full">Enter Workspace</button>
-                <p id="auth-error" class="auth-error"></p>
-            </div>
-            <div id="welcome-step" class="auth-step hidden">
-                <div class="welcome-message">
-                    <div class="checkmark">OK</div>
-                    <h2>Workspace ready</h2>
-                    <p>Opening your dashboard.</p>
-                </div>
-            </div>
-        </section>
+<body>
+  <div class="auth">
+    <section class="auth-side">
+      <a class="brand on-light" href="../index.html"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11V6.5a1.5 1.5 0 0 1 3 0V10m0-4a1.5 1.5 0 0 1 3 0v4m0-3a1.5 1.5 0 0 1 3 0v4m0-2a1.5 1.5 0 0 1 3 0v4.5a6.5 6.5 0 0 1-6.5 6.5h-1A6.5 6.5 0 0 1 5 15.5V13a2 2 0 0 1 2-2"/></svg></span><span>Start<b>Punch</b></span></a>
+      <div>
+        <h1>Discover. Validate.<br>Connect. Build.</h1>
+        <p style="max-width:440px;font-size:1.05rem">Evidence-backed startup research, an explainable evaluation rubric, and a professional network of founders, builders and investors.</p>
+      </div>
+      <p class="small" style="max-width:440px">Your reports stay private unless you choose to publish a summary. We never sell or share your data.</p>
+    </section>
+    <main class="auth-main">
+      <div class="auth-card">
+        <div class="segmented" role="tablist" aria-label="Account" style="margin-bottom:22px">
+          <button type="button" role="tab" id="tab-login" aria-pressed="true">Sign in</button>
+          <button type="button" role="tab" id="tab-signup" aria-pressed="false">Create account</button>
+        </div>
+        <form id="login-form" class="card" novalidate>
+          <h2>Welcome back</h2>
+          <div class="field"><label for="li-email">Email</label><input class="input" id="li-email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="li-password">Password</label><input class="input" id="li-password" name="password" type="password" autocomplete="current-password" required></div>
+          <p class="form-error" role="alert"></p>
+          <button class="btn btn--yellow btn--block btn--lg" data-busy="Signing in">Sign in</button>
+        </form>
+        <form id="signup-form" class="card hidden" novalidate>
+          <h2>Create your account</h2>
+          <div class="field"><label for="su-name">Full name</label><input class="input" id="su-name" name="name" autocomplete="name" maxlength="80" required></div>
+          <div class="field"><label for="su-email">Email</label><input class="input" id="su-email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="su-password">Password <span class="hint">8+ characters, mix letters and numbers</span></label><input class="input" id="su-password" name="password" type="password" autocomplete="new-password" minlength="8" required></div>
+          <p class="form-error" role="alert"></p>
+          <button class="btn btn--yellow btn--block btn--lg" data-busy="Creating account">Create account</button>
+          <p class="tiny muted" style="margin:12px 0 0">By creating an account you agree to use StartPunch respectfully. Reports are private by default.</p>
+        </form>
+      </div>
     </main>
-    <script src="../assets/js/common.js"></script>
-    <script src="../assets/js/auth.js"></script>
+  </div>
+  <script type="module" src="../assets/js/pages/login.js"></script>
 </body>
 </html>

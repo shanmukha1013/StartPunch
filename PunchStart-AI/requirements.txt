@@ -1,0 +1,9 @@
+# Runtime dependencies for the Vercel Python function (api/index.py) — versions the test suite ran against.
+# Training-only dependencies live in backend/requirements-ml.txt.
+fastapi==0.137.2
+pydantic==2.13.4
+SQLAlchemy==2.1.8
+pg8000==1.31.6
+PyJWT==2.15.1
+httpx==0.28.1
+numpy==2.4.6

@@ -1,4 +1,25 @@
+# secrets & local config
 .env
+.env.*
+!.env.example
+
+# python
 .venv/
+venv/
 __pycache__/
 *.pyc
+.pytest_cache/
+
+# local runtime state (dev database, dev session secret, logs)
+PunchStart-AI/backend/var/
+*.db
+*.db-wal
+*.db-shm
+
+# raw source caches (re-fetchable, large)
+PunchStart-AI/backend/data/raw/
+
+# tooling
+.vercel/
+node_modules/
+.DS_Store

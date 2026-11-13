@@ -1,84 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="wfFnYAlMV-GvLFVxlfd28zhOafYDus1gTBvpeaZfo0w" />
-    <title>PunchStart - Startup Validation Platform</title>
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="assets/css/main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="wfFnYAlMV-GvLFVxlfd28zhOafYDus1gTBvpeaZfo0w" />
+  <meta name="description" content="StartPunch helps founders discover ideas, validate opportunities with evidence, connect with the right people and build real businesses.">
+  <meta name="theme-color" content="#F5D90A">
+  <title>StartPunch — Startup intelligence and the founder network</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="assets/css/app.css">
 </head>
-<body>
-    <header class="landing-header">
-        <div class="container">
-            <nav class="landing-nav">
-                <a href="index.html" class="logo"><span class="brand-mark"><span><span class="p">P</span><span class="s">S</span></span></span><span class="brand-punch">Punch</span><span class="brand-start">Start</span></a>
-                <a href="pages/login.html" class="btn btn-primary">Open Workspace</a>
-            </nav>
+<body class="landing">
+  <header class="landing-nav on-light">
+    <a class="brand" href="index.html"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11V6.5a1.5 1.5 0 0 1 3 0V10m0-4a1.5 1.5 0 0 1 3 0v4m0-3a1.5 1.5 0 0 1 3 0v4m0-2a1.5 1.5 0 0 1 3 0v4.5a6.5 6.5 0 0 1-6.5 6.5h-1A6.5 6.5 0 0 1 5 15.5V13a2 2 0 0 1 2-2"/></svg></span><span>Start<b>Punch</b></span></a>
+    <nav class="links" aria-label="Site">
+      <a href="#how">How it works</a>
+      <a href="#honest">Our standards</a>
+      <a href="pages/login.html" id="nav-signin">Sign in</a>
+      <a class="btn" href="pages/login.html#signup" id="nav-cta">Get started</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Startup intelligence · Founder network</p>
+        <h1>Ideas deserve <em>evidence</em>, not applause.</h1>
+        <p class="lede">StartPunch researches your idea against real product launches and shutdowns, scores it with a transparent rubric, writes a 35-section decision report with sources — and connects you with the founders, builders and investors who can help you build it.</p>
+        <div class="row">
+          <a class="btn btn--lg" href="pages/login.html#signup" id="hero-cta">Analyze your idea</a>
+          <a class="btn btn--lg btn--ghost" href="#how">See how it works</a>
         </div>
-    </header>
+      </div>
+      <div class="hero-panel" aria-label="What a StartPunch analysis does">
+        <p class="eyebrow" style="color:var(--k-300)">Inside every report</p>
+        <div class="line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Hybrid search across launch posts and shutdown announcements</div>
+        <div class="line ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3l1.8 4.6L18.5 9.5l-4.7 1.9L12 16l-1.8-4.6L5.5 9.5l4.7-1.9z"/></svg>AI grades every match: direct, indirect or unrelated</div>
+        <div class="line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>13-dimension rubric with rationale, evidence and confidence</div>
+        <div class="line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3 4.5 6v6c0 4.4 3.2 7.8 7.5 9 4.3-1.2 7.5-4.6 7.5-9V6z"/></svg>Every claim labeled: fact, estimate, assumption or advice</div>
+        <div class="line ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Founder assistant that answers follow-ups from your report</div>
+      </div>
+    </section>
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h1 class="hero-title">Build the right startup.<br>Not just a startup.</h1>
-                <p class="hero-subtitle" style="font-weight: 700; font-size: 1.4rem; color: var(--signal-red); margin-top: 20px; margin-bottom: 12px; letter-spacing: 0.02em;">Ideas deserve evidence.</p>
-                <p class="hero-description" style="max-width: 620px; margin: 0 auto 32px; color: var(--muted); font-size: 1.05rem; line-height: 1.75;">Validate markets, estimate demand, analyze competitors, evaluate funding, and generate investor-ready reports before writing a single line of code.</p>
-                <div class="hero-actions">
-                    <a href="pages/login.html" class="btn btn-primary btn-lg">Validate Your Startup</a>
-                    <a href="pages/results.html?demo=1" class="btn btn-secondary btn-lg">View Demo Report</a>
-                </div>
-                
-                <div class="hero-preview stagger">
-                    <div class="preview-card score-preview"><span>Startup Score</span><strong>82</strong><small>Investor-grade opportunity</small></div>
-                    <div class="preview-card"><span>Market</span><strong>INR 80,000 Cr</strong><small>TAM modeled from category demand</small></div>
-                    <div class="preview-card"><span>Funding</span><strong>Pre-seed</strong><small>Milestone-gated recommendation</small></div>
-                    <div class="preview-card"><span>Readiness</span><strong>75%</strong><small>Validation path identified</small></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="features">
-            <div class="container">
-                <h2 class="section-title">Built like a founder analyst stack</h2>
-                <div class="features-grid">
-                    <article class="feature-card">
-                        <div class="feature-icon">01</div>
-                        <h3>Investor-grade reports</h3>
-                        <p>Executive summary, market sizing, SWOT, risks, funding logic, GTM plan, roadmap, and pitch deck outline.</p>
-                    </article>
-                    <article class="feature-card">
-                        <div class="feature-icon">02</div>
-                        <h3>Structured intelligence engine</h3>
-                        <p>Strict report schema, validation, retries, repair, and professional analysis continuity.</p>
-                    </article>
-                    <article class="feature-card">
-                        <div class="feature-icon">03</div>
-                        <h3>Founder workflow</h3>
-                        <p>Multi-step submission, saved reports, dashboard analytics, and an insight feed for validation work.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="how-it-works">
-            <div class="container">
-                <h2 class="section-title">From idea to decision</h2>
-                <div class="steps">
-                    <article class="step"><div class="step-number">1</div><h3>Describe the startup</h3><p>Capture problem, solution, market, revenue, team, and funding needs.</p></article>
-                    <article class="step"><div class="step-number">2</div><h3>Generate the report</h3><p>Produce a structured validation report with scores and investor logic.</p></article>
-                    <article class="step"><div class="step-number">3</div><h3>Act on the gaps</h3><p>Use roadmap, risks, and founder recommendations to decide what to prove next.</p></article>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="landing-footer">
-        <div class="container">
-            <p>PunchStart — Ideas deserve evidence.</p>
+    <section class="band band--light" id="how">
+      <div class="band-inner">
+        <p class="eyebrow">Three pillars, one workspace</p>
+        <h2>From a rough idea to the right people — without guesswork.</h2>
+        <div class="pillars">
+          <article class="pillar"><div class="icon-tile icon-tile--yellow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg></div><h3>Discover</h3><p>Browse public startup ideas, trending discussions and founder communities across AI, SaaS, FinTech, HealthTech and more.</p></article>
+          <article class="pillar"><div class="icon-tile icon-tile--ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M12 3l1.8 4.6L18.5 9.5l-4.7 1.9L12 16l-1.8-4.6L5.5 9.5l4.7-1.9z"/></svg></div><h3>Validate</h3><p>Answer a few follow-up questions, then get competitors, risks, unit economics, an MVP scope and cheap validation experiments.</p></article>
+          <article class="pillar"><div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14a6 6 0 0 1 3.5 6"/></svg></div><h3>Connect</h3><p>Find co-founders, developers, designers, mentors and investors matched on skills and interests — with the reasons shown.</p></article>
+          <article class="pillar"><div class="icon-tile icon-tile--yellow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M5 15c-1.5 1.3-2 4-2 6 2 0 4.7-.5 6-2"/><path d="M9 15 6.5 12.5C8 8 11.5 3.5 20.5 3.5 20.5 12.5 16 16 11.5 17.5z"/></svg></div><h3>Build</h3><p>Track validation experiments, watch competitors, publish progress and invite feedback — without exposing confidential details.</p></article>
         </div>
-    </footer>
-    <script src="assets/js/common.js"></script>
+      </div>
+    </section>
 
+    <section class="band band--ink" id="honest">
+      <div class="band-inner">
+        <p class="eyebrow" style="color:var(--y-400)">Our standards</p>
+        <h2>Real research, honest limits.</h2>
+        <p style="color:var(--k-200);max-width:720px">We would rather tell you "we don't know" than invent a market size. The knowledge base below is built from public Hacker News launch posts, Show HN products and verified shutdown announcements — these are live numbers from the current snapshot.</p>
+        <div class="kb-numbers" id="kb-numbers" aria-live="polite">
+          <div class="card stat"><span class="stat-label">Companies &amp; products indexed</span><span class="stat-value" data-k="entities">—</span></div>
+          <div class="card stat"><span class="stat-label">Early-stage startup launches</span><span class="stat-value" data-k="startups">—</span></div>
+          <div class="card stat"><span class="stat-label">Verified shutdown announcements</span><span class="stat-value" data-k="shutdowns">—</span></div>
+          <div class="card stat"><span class="stat-label">Sectors covered</span><span class="stat-value" data-k="sectors">—</span></div>
+        </div>
+        <p class="small" id="kb-note" style="color:var(--k-300);margin-top:12px"></p>
+        <div class="honest">
+          <div class="card"><h3 style="color:#fff">Sources or it didn't happen</h3><p>Claims about companies link to the original post. Citations are checked automatically; unsupported "facts" are relabeled as unverified.</p></div>
+          <div class="card"><h3 style="color:#fff">Explainable scoring</h3><p>The score is a transparent, rule-based rubric — every dimension shows its rationale, evidence, confidence and the cheapest next test. It is not a fake prediction of success.</p></div>
+          <div class="card"><h3 style="color:#fff">Private by default</h3><p>Reports are visible only to you. Publishing shares just the summary you choose; inputs, evidence and scores stay private unless you opt in.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="band-inner" style="text-align:center">
+        <h2 style="margin:0 auto 14px">Build the right startup. Not just a startup.</h2>
+        <a class="btn btn--lg" href="pages/login.html#signup">Create your free account</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="landing-footer">
+    <div class="band-inner">
+      <span>© StartPunch — Discover · Validate · Connect · Build</span>
+      <span>Knowledge base: public Hacker News data, linked to original threads. AI features use Google Gemini.</span>
+    </div>
+  </footer>
+  <script type="module" src="assets/js/pages/landing.js"></script>
 </body>
 </html>

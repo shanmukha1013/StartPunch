@@ -1,0 +1,480 @@
+{
+  "name": "market-clusters",
+  "version": "v1",
+  "trained_at": "2026-11-13T18:09:44.916611+00:00",
+  "kb_snapshot": "20261113-cea918e5",
+  "algorithm": "k-means on L2-normalized entity embeddings (gemini-embedding-001, 256-d)",
+  "k_selection": {
+    "candidates": [
+      10,
+      14,
+      18,
+      22,
+      26,
+      30
+    ],
+    "silhouette_cosine_sample": {
+      "10": 0.0309,
+      "14": 0.0329,
+      "18": 0.031,
+      "22": 0.0278,
+      "26": 0.0202,
+      "30": 0.0196
+    },
+    "chosen_k": 14
+  },
+  "clusters": [
+    {
+      "id": 0,
+      "size": 20,
+      "top_terms": [
+        "video",
+        "size",
+        "web",
+        "personalized",
+        "real",
+        "virtual",
+        "friends",
+        "kids"
+      ],
+      "dominant_sectors": [
+        {
+          "sector": "social_communication",
+          "share": 0.35
+        },
+        {
+          "sector": "devtools",
+          "share": 0.2
+        }
+      ],
+      "examples": [
+        "hn:stipop",
+        "hn:hyperbeamapi",
+        "hn:pingpong",
+        "hn:rallyvideo",
+        "hn:scena360com",
+        "hn:mirror"
+      ]
+    },
+    {
+      "id": 1,
+      "size": 114,
+      "top_terms": [
+        "teams",
+        "testing",
+        "vr",
+        "search",
+        "slack",
+        "home",
+        "api",
+        "content"
+      ],
+      "dominant_sectors": [
+        {
+          "sector": "devtools",
+          "share": 0.184
+        },
+        {
+          "sector": "social_communication",
+          "share": 0.114
+        }
+      ],
+      "examples": [
+        "hn:buildyourfastwithourfreeandbeautifuluiki",
+        "hn:aigeneratedsummaryofanyurl",
+        "hn:getridofdistractionsandfocusontasksthatm",
+        "hn:devopsasaservice",
+        "hn:preflight",
+        "hn:gathertown"
+      ]
+    },
+    {
+      "id": 2,
+      "size": 58,
+      "top_terms": [
+        "know",
+        "email",
+        "share",
+        "design",
+        "website",
+        "search",
+        "best",
+        "open"
+      ],
+      "dominant_sectors": [
+        {
+          "sector": "social_communication",
+          "share": 0.172
+        },
+        {
+          "sector": "devtools",
+          "share": 0.155
+        }
+      ],
+      "examples": [
+        "hn:passivejobsearching",
+        "hn:noya",
+        "hn:buymeacoffee",
+        "hn:readykit",
+        "hn:freetoolforcreatingyourownnewsletter",
+        "hn:educaoracom"
+      ]
+    },
+    {
+      "id": 3,
+      "size": 95,
+      "top_terms": [
+        "software",
+        "code",
+        "teams",
+        "web",
+        "api",
+        "source",
+        "open",
+        "developers"
+      ],
+      "dominant_sectors": [
+        {
+          "sector": "devtools",
+          "share": 0.411
+        },
+        {
+          "sector": "enterprise_saas",
+          "share": 0.295
+        }
+      ],
+      "examples": [
+        "hn:tella",
+        "hn:apitracker",
+        "hn:sidekick",
+        "hn:hotglue",
+        "hn:cohere",
+        "hn:runway"
+      ]
+    },
+    {
+      "id": 4,
+      "size": 38,
+      "top_terms": [
+        "ml",
+        "data",
+        "ai",
+        "models",
+        "learning",
+        "training",
+        "machine",
+        "api"
+      ],
+      "dominant_sectors": [
+        {
+          "sector": "ai_ml",
+          "share": 0.816
+        },
+        {
+          "sector": "hardware_iot",
+          "share": 0.053
+        }
+      ],
+      "examples": [
+        "hn:reveryai",
+        "hn:floydhub",
+        "hn:slai",
+        "hn:nyckel",
+        "hn:humanloop",
+        "hn:dioptra"
+      ]
+    },
+    {
+      "id": 5,
+      "size": 66,
+      "top_terms": [
+        "money",
+        "payments",
+        "bank",
+        "credit",
+        "capital",
+        "pay",
+        "employees",
+        "debt"
+      ],
+      "dominant_sectors": [
+        {
+          "sector": "fintech",
+          "share": 0.652
+        },
+        {
+          "sector": "hr_work",
+          "share": 0.121
+        }
+      ],
+      "examples": [
+        "hn:finley",
+        "hn:r2capital",
+        "hn:coinrule",
+        "hn:methodfinancial",
+        "hn:keepertax",
+        "hn:penny"
+      ]
+    },
+    {
+      "id": 6,
+      "size": 27,
+      "top_terms": [
+        "code",
+        "data",
+        "writing",
+        "interactive",
+        "ai",
+        "google",
+        "software",
+        "technical"
+      ],
+      "dominant_sectors": [
+        {
+          "sector": "devtools",
+          "share": 0.444
+        },
+        {
+          "sector": "enterprise_saas",
+          "share": 0.148
+        }
+      ],
+      "examples": [
+        "hn:haystack",
+        "hn:glide",
+        "hn:livedocs",
+        "hn:curvenote",
+        "hn:deepnote",
+        "hn:mintlify"
+      ]
+    },
+    {
+      "id": 7,
+      "size": 45,
+      "top_terms": [
+        "cloud",
+        "aws",
+        "open",
+        "open source",
+        "serverless",
+        "source",
+        "run",
+        "environments"
+      ],
+      "dominant_sectors": [
+        {
+          "sector": "devtools",
+          "share": 0.778
+        },
+        {
+          "sector": "cybersecurity",
+          "share": 0.111
+        }
+      ],
+      "examples": [
+        "hn:fly",
+        "hn:layerci",
+        "hn:sst",
+        "hn:herokuforawslambda",
+        "hn:reploy",
+        "hn:payload"
+      ]
+    },
+    {
+      "id": 8,
+      "size": 65,
+      "top_terms": [
+        "health",
+        "home",
+        "medical",
+        "patients",
+        "software",
+        "healthcare",
+        "mental",
+        "treatment"
+      ],
+      "dominant_sectors": [
+        {
+          "sector": "healthtech",
+          "share": 0.523
+        },
+        {
+          "sector": "proptech",
+          "share": 0.108
+        }
+      ],
+      "examples": [
+        "hn:ionamind",
+        "hn:heliosleep",
+        "hn:axlehealth",
+        "hn:terusama",
+        "hn:healthwiz",
+        "hn:trustle"
+      ]
+    },
+    {
+      "id": 9,
+      "size": 31,
+      "top_terms": [
+        "marketplace",
+        "college",
+        "stores",
+        "mom",
+        "problem",
+        "job",
+        "shopping",
+        "art"
+      ],
+      "dominant_sectors": [
+        {
+          "sector": "ecommerce",
+          "share": 0.355
+        },
+        {
+          "sector": "social_communication",
+          "share": 0.161
+        }
+      ],
+      "examples": [
+        "hn:kitchenful",
+        "hn:carve",
+        "hn:shiftdoc",
+        "hn:queenly",
+        "hn:lykely",
+        "hn:slingshow"
+      ]
+    },
+    {
+      "id": 10,
+      "size": 63,
+      "top_terms": [
+        "school",
+        "founder",
+        "live",
+        "games",
+        "black",
+        "sales",
+        "started",
+        "tech"
+      ],
+      "dominant_sectors": [
+        {
+          "sector": "healthtech",
+          "share": 0.175
+        },
+        {
+          "sector": "ecommerce",
+          "share": 0.143
+        }
+      ],
+      "examples": [
+        "hn:upchieve",
+        "hn:globalbelly",
+        "hn:auravision",
+        "hn:virtually",
+        "hn:simplehabit",
+        "hn:koko"
+      ]
+    },
+    {
+      "id": 11,
+      "size": 39,
+      "top_terms": [
+        "meetings",
+        "calendar",
+        "notes",
+        "teams",
+        "working",
+        "jira",
+        "note",
+        "google"
+      ],
+      "dominant_sectors": [
+        {
+          "sector": "hr_work",
+          "share": 0.308
+        },
+        {
+          "sector": "enterprise_saas",
+          "share": 0.205
+        }
+      ],
+      "examples": [
+        "hn:routine",
+        "hn:wren",
+        "hn:clover",
+        "hn:trace",
+        "hn:hypercontext",
+        "hn:slite"
+      ]
+    },
+    {
+      "id": 12,
+      "size": 22,
+      "top_terms": [
+        "carbon",
+        "water",
+        "electric",
+        "charging",
+        "indian",
+        "capture",
+        "air",
+        "coffee"
+      ],
+      "dominant_sectors": [
+        {
+          "sector": "cleantech",
+          "share": 0.5
+        },
+        {
+          "sector": "food_agri",
+          "share": 0.227
+        }
+      ],
+      "examples": [
+        "hn:airmyne",
+        "hn:prometheus",
+        "hn:remora",
+        "hn:carboncrusher",
+        "hn:chargerobotics",
+        "hn:heimdal"
+      ]
+    },
+    {
+      "id": 13,
+      "size": 36,
+      "top_terms": [
+        "data",
+        "open",
+        "source",
+        "open source",
+        "database",
+        "databases",
+        "analytics",
+        "postgres"
+      ],
+      "dominant_sectors": [
+        {
+          "sector": "devtools",
+          "share": 0.639
+        },
+        {
+          "sector": "enterprise_saas",
+          "share": 0.194
+        }
+      ],
+      "examples": [
+        "hn:hightouch",
+        "hn:hydra",
+        "hn:june",
+        "hn:datafold",
+        "hn:dataform",
+        "hn:hubble"
+      ]
+    }
+  ],
+  "limitations": [
+    "Clusters describe the knowledge base's coverage (HN launches), not the whole market.",
+    "Silhouette scores for text embeddings are typically low because topics overlap; treat clusters as a map."
+  ]
+}

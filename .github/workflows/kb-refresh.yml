@@ -1,0 +1,38 @@
+name: Knowledge-base refresh
+
+# Manual only. Re-fetches public Hacker News data, re-embeds new chunks and retrains the
+# models, then uploads the snapshot as an artifact for review. It never commits automatically.
+on:
+  workflow_dispatch:
+    inputs:
+      refresh:
+        description: "Re-fetch all sources (otherwise only resume embeddings / retrain)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    defaults:
+      run:
+        working-directory: PunchStart-AI/backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements-ml.txt
+      - name: Build snapshot
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python -m startpunch.ingest build ${{ inputs.refresh && '--refresh' || '' }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kb-snapshot
+          path: |
+            PunchStart-AI/backend/data/kb
+            PunchStart-AI/backend/data/models

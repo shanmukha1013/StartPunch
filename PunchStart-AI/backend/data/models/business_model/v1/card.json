@@ -1,0 +1,101 @@
+{
+  "name": "business_model",
+  "version": "v1",
+  "trained_at": "2026-11-13T18:08:32.406987+00:00",
+  "kb_snapshot": "20261113-cea918e5",
+  "task": "Predict the primary business model from a description.",
+  "inputs": "Entity description text (tfidf_lr) or a 256-d gemini-embedding-001 vector (embedding_lr).",
+  "outputs": "Probability per class; top-3 returned with the model version.",
+  "label_source": "LLM silver labels (gemini-2.5-flash) on 2042 sampled entities",
+  "training_data": {
+    "examples": 2024,
+    "train": 1619,
+    "test": 405,
+    "class_counts": {
+      "advertising": 86,
+      "consumer_freemium": 214,
+      "ecommerce_d2c": 23,
+      "hardware": 62,
+      "marketplace": 48,
+      "open_core": 561,
+      "saas_subscription": 737,
+      "services": 62,
+      "transaction_fees": 64,
+      "usage_based": 167
+    },
+    "dropped_classes": [],
+    "min_class_size": 20
+  },
+  "evaluation_note": "Hold-out metrics measure agreement with LLM-assigned (silver) labels, not human ground truth.",
+  "known_limitations": [
+    "Silver labels inherit LLM mistakes and ambiguity between neighbouring classes.",
+    "Training entities come from Hacker News launches (tech-heavy, US-heavy, 2007-present).",
+    "Multi-category products are forced into a single label."
+  ],
+  "classes": [
+    "advertising",
+    "consumer_freemium",
+    "ecommerce_d2c",
+    "hardware",
+    "marketplace",
+    "open_core",
+    "saas_subscription",
+    "services",
+    "transaction_fees",
+    "usage_based"
+  ],
+  "class_descriptions": {
+    "advertising": "Free product monetized with ads",
+    "consumer_freemium": "Consumer app with freemium upgrades or in-app purchases",
+    "ecommerce_d2c": "Selling physical goods directly to consumers",
+    "hardware": "Selling hardware devices (possibly with software)",
+    "marketplace": "Two-sided marketplace taking a commission",
+    "open_core": "Open-source product with paid hosting/enterprise tier",
+    "saas_subscription": "Recurring software subscription (B2B or prosumer)",
+    "services": "Services / agency / done-for-you work",
+    "transaction_fees": "Fees on payments/financial transactions",
+    "usage_based": "Usage/consumption-based pricing (API calls, compute, volume)"
+  },
+  "metrics": {
+    "tfidf_lr": {
+      "accuracy": 0.5852,
+      "macro_f1": 0.3852,
+      "weighted_f1": 0.5846,
+      "per_class_f1": {
+        "advertising": 0.2,
+        "consumer_freemium": 0.435,
+        "ecommerce_d2c": 0.0,
+        "hardware": 0.636,
+        "marketplace": 0.125,
+        "open_core": 0.776,
+        "saas_subscription": 0.647,
+        "services": 0.08,
+        "transaction_fees": 0.467,
+        "usage_based": 0.486
+      },
+      "C": 2.0,
+      "cv_macro_f1_train": 0.4297
+    },
+    "majority_baseline": {
+      "accuracy": 0.3654,
+      "macro_f1": 0.0535
+    },
+    "embedding_lr": {
+      "accuracy": 0.5242,
+      "macro_f1": 0.4514,
+      "weighted_f1": 0.5442,
+      "per_class_f1": {
+        "advertising": 0.222,
+        "consumer_freemium": 0.526,
+        "ecommerce_d2c": 0.286,
+        "hardware": 0.5,
+        "marketplace": 0.56,
+        "open_core": 0.5,
+        "saas_subscription": 0.627,
+        "services": 0.333,
+        "transaction_fees": 0.545,
+        "usage_based": 0.414
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: PunchStart-AI/backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: PunchStart-AI/requirements.txt
+      - run: pip install -r ../requirements.txt -r requirements-ml.txt pytest==9.2.0
+      - run: python -m pytest -q
+      - name: App imports the way Vercel does
+        working-directory: PunchStart-AI
+        run: python -c "import api.index; print('ok', len(api.index.app.routes))"
+
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Syntax-check every ES module
+        run: for f in PunchStart-AI/frontend/assets/js/core/*.js PunchStart-AI/frontend/assets/js/pages/*.js; do node --check "$f"; done

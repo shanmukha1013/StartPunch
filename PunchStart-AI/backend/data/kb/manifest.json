@@ -1,0 +1,308 @@
+{
+ "snapshot_id": "20261113-cea918e5",
+ "built_at": "2026-11-13T18:07:24.735750+00:00",
+ "sources": [
+  {
+   "id": "hn_launch",
+   "name": "Hacker News \u2014 Launch HN",
+   "url": "https://news.ycombinator.com/launches",
+   "license": "Public HN Search API; excerpts \u00a9 original authors, always linked to the source thread",
+   "description": "Founder-written launch announcements of early-stage startups (mostly Y Combinator companies).",
+   "queries": [
+    {
+     "query": "\"Launch HN\"",
+     "min_points": 0,
+     "title_prefix": "launch hn"
+    }
+   ],
+   "fetched_at": "2026-11-13T16:08:36.344050+00:00",
+   "items_fetched": 1163,
+   "latest_item": "2026-11-11T17:11:56Z"
+  },
+  {
+   "id": "hn_show",
+   "name": "Hacker News \u2014 Show HN (\u2265 100 points)",
+   "url": "https://news.ycombinator.com/show",
+   "license": "Public HN Search API; excerpts \u00a9 original authors, always linked to the source thread",
+   "description": "Product launches that received at least 100 community upvotes. Includes side projects, not only companies.",
+   "queries": [
+    {
+     "query": "\"Show HN\"",
+     "min_points": 100,
+     "title_prefix": "show hn"
+    }
+   ],
+   "fetched_at": "2026-11-13T16:24:32.746807+00:00",
+   "items_fetched": 7598,
+   "latest_item": "2026-11-12T18:15:48Z"
+  },
+  {
+   "id": "hn_shutdown",
+   "name": "Hacker News \u2014 shutdowns & post-mortems",
+   "url": "https://news.ycombinator.com/",
+   "license": "Public HN Search API; titles/excerpts \u00a9 original authors, always linked to the source thread",
+   "description": "Stories announcing a product or company shutting down, or a founder post-mortem.",
+   "queries": [
+    {
+     "query": "\"shutting down\"",
+     "min_points": 30
+    },
+    {
+     "query": "\"shut down\"",
+     "min_points": 60
+    },
+    {
+     "query": "post-mortem",
+     "min_points": 20
+    },
+    {
+     "query": "postmortem",
+     "min_points": 20
+    },
+    {
+     "query": "\"why we failed\"",
+     "min_points": 10
+    },
+    {
+     "query": "\"startup failed\"",
+     "min_points": 10
+    },
+    {
+     "query": "\"lessons from\"  startup failure",
+     "min_points": 10
+    }
+   ],
+   "fetched_at": "2026-11-13T16:24:44.861618+00:00",
+   "items_fetched": 933,
+   "latest_item": "2026-11-04T18:06:14Z"
+  }
+ ],
+ "build_report": {
+  "raw_items": {
+   "hn_launch": 1163,
+   "hn_show": 7598,
+   "hn_shutdown": 933
+  },
+  "rejected": {
+   "unparseable_title": 6,
+   "insufficient_text": 22,
+   "no_identifiable_name": 4417,
+   "shutdown_unparseable_or_not_failure": 586,
+   "shutdown_rejected_by_verification": 108
+  },
+  "resolved_by_domain": 186,
+  "resolved_by_name": 105,
+  "entities_created": {
+   "startup": 1117,
+   "product": 2941,
+   "company": 206
+  },
+  "companies": 4264,
+  "chunks": 7602
+ },
+ "validation": {
+  "shutdown_candidates_checked_by_llm": 347,
+  "shutdown_confirmed": 254
+ },
+ "labels": {
+  "sector:llm_label": 2734,
+  "business_model:llm_label": 2734,
+  "sector:unclassified": 1404,
+  "business_model:unclassified": 1176,
+  "sector:model_predicted": 126,
+  "business_model:model_predicted": 354
+ },
+ "counts": {
+  "entities": 4264,
+  "chunks": 7602,
+  "by_type": {
+   "startup": 1117,
+   "product": 2941,
+   "company": 206
+  },
+  "yc_startups": 928,
+  "shutdown_announced": 228,
+  "by_sector": {
+   "unclassified": 1514,
+   "devtools": 1011,
+   "ai_ml": 337,
+   "enterprise_saas": 225,
+   "media_content": 200,
+   "hr_work": 107,
+   "fintech": 105,
+   "social_communication": 105,
+   "gaming": 105,
+   "edtech": 101,
+   "cybersecurity": 96,
+   "hardware_iot": 84,
+   "healthtech": 82,
+   "ecommerce": 42,
+   "cleantech": 27,
+   "crypto_web3": 24,
+   "proptech": 22,
+   "food_agri": 19,
+   "mobility": 16,
+   "travel": 15,
+   "logistics": 12,
+   "space_defense": 8,
+   "telecom": 7
+  }
+ },
+ "embedding": {
+  "model": "gemini-embedding-001",
+  "dims": 256,
+  "stored_as": "float16",
+  "chunks_embedded": 800,
+  "chunks_total": 7602
+ },
+ "models": {
+  "industry": {
+   "version": "v1",
+   "metrics": {
+    "tfidf_lr": {
+     "accuracy": 0.6096,
+     "macro_f1": 0.574,
+     "weighted_f1": 0.6141,
+     "per_class_f1": {
+      "ai_ml": 0.6,
+      "cleantech": 0.667,
+      "crypto_web3": 0.667,
+      "cybersecurity": 0.541,
+      "devtools": 0.725,
+      "ecommerce": 0.308,
+      "edtech": 0.606,
+      "enterprise_saas": 0.391,
+      "fintech": 0.698,
+      "gaming": 0.6,
+      "hardware_iot": 0.48,
+      "healthtech": 0.743,
+      "hr_work": 0.757,
+      "media_content": 0.458,
+      "proptech": 0.667,
+      "social_communication": 0.279
+     },
+     "C": 2.0,
+     "cv_macro_f1_train": 0.5142
+    },
+    "majority_baseline": {
+     "accuracy": 0.3904,
+     "macro_f1": 0.0351
+    },
+    "embedding_lr": {
+     "accuracy": 0.7073,
+     "macro_f1": 0.7038,
+     "weighted_f1": 0.7124,
+     "per_class_f1": {
+      "ai_ml": 0.429,
+      "cleantech": 0.857,
+      "crypto_web3": 0.667,
+      "cybersecurity": 0.471,
+      "devtools": 0.739,
+      "ecommerce": 0.667,
+      "edtech": 0.833,
+      "enterprise_saas": 0.538,
+      "fintech": 0.9,
+      "gaming": 0.667,
+      "hardware_iot": 0.571,
+      "healthtech": 0.917,
+      "hr_work": 0.667,
+      "media_content": 0.833,
+      "proptech": 0.8,
+      "social_communication": 0.706
+     }
+    }
+   }
+  },
+  "business_model": {
+   "version": "v1",
+   "metrics": {
+    "tfidf_lr": {
+     "accuracy": 0.5852,
+     "macro_f1": 0.3852,
+     "weighted_f1": 0.5846,
+     "per_class_f1": {
+      "advertising": 0.2,
+      "consumer_freemium": 0.435,
+      "ecommerce_d2c": 0.0,
+      "hardware": 0.636,
+      "marketplace": 0.125,
+      "open_core": 0.776,
+      "saas_subscription": 0.647,
+      "services": 0.08,
+      "transaction_fees": 0.467,
+      "usage_based": 0.486
+     },
+     "C": 2.0,
+     "cv_macro_f1_train": 0.4297
+    },
+    "majority_baseline": {
+     "accuracy": 0.3654,
+     "macro_f1": 0.0535
+    },
+    "embedding_lr": {
+     "accuracy": 0.5242,
+     "macro_f1": 0.4514,
+     "weighted_f1": 0.5442,
+     "per_class_f1": {
+      "advertising": 0.222,
+      "consumer_freemium": 0.526,
+      "ecommerce_d2c": 0.286,
+      "hardware": 0.5,
+      "marketplace": 0.56,
+      "open_core": 0.5,
+      "saas_subscription": 0.627,
+      "services": 0.333,
+      "transaction_fees": 0.545,
+      "usage_based": 0.414
+     }
+    }
+   }
+  }
+ },
+ "clusters": {
+  "version": "v1",
+  "k": 14
+ },
+ "sector_taxonomy": {
+  "ai_ml": "AI & Machine Learning",
+  "devtools": "Developer Tools & Infrastructure",
+  "enterprise_saas": "Enterprise Software & SaaS",
+  "fintech": "FinTech",
+  "crypto_web3": "Crypto & Web3",
+  "healthtech": "HealthTech & Biotech",
+  "edtech": "EdTech",
+  "ecommerce": "E-commerce & Retail",
+  "media_content": "Media & Content",
+  "social_communication": "Social & Communication",
+  "gaming": "Gaming",
+  "mobility": "Mobility & Transportation",
+  "logistics": "Logistics & Supply Chain",
+  "cleantech": "CleanTech & Energy",
+  "food_agri": "FoodTech & AgriTech",
+  "proptech": "PropTech & Real Estate",
+  "travel": "Travel & Hospitality",
+  "hr_work": "HR & Future of Work",
+  "cybersecurity": "Cybersecurity",
+  "hardware_iot": "Hardware, Robotics & IoT",
+  "telecom": "Telecommunications",
+  "space_defense": "Aerospace & Space"
+ },
+ "freshness_policy_days": 30,
+ "retrieval_evaluation": {
+  "evaluated_at": "2026-11-13T18:09:55.058948+00:00",
+  "queries": 200,
+  "seed": 7,
+  "protocol": "Queries are 1-2 sentences from a sampled entity's own launch text with its name removed. known_item_recall@10 = the source entity is in the top 10. sector_precision@10 = share of the other top-10 results with the same (LLM-assigned) sector. Labels are silver, so precision is approximate.",
+  "results": {
+   "lexical": {
+    "known_item_recall@10": 1.0,
+    "sector_precision@10": 0.4108
+   }
+  },
+  "skipped": "dense and hybrid evaluation skipped: embedding quota exhausted",
+  "dense_coverage": {
+   "chunks_with_vectors": 800,
+   "chunks_total": 7602
+  }
+ }
+}

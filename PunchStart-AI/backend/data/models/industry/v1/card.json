@@ -1,0 +1,138 @@
+{
+  "name": "industry",
+  "version": "v1",
+  "trained_at": "2026-11-13T18:08:15.519515+00:00",
+  "kb_snapshot": "20261113-cea918e5",
+  "task": "Predict the startup sector (22-sector taxonomy) from a description.",
+  "inputs": "Entity description text (tfidf_lr) or a 256-d gemini-embedding-001 vector (embedding_lr).",
+  "outputs": "Probability per class; top-3 returned with the model version.",
+  "label_source": "LLM silver labels (gemini-2.5-flash) on 2624 sampled entities",
+  "training_data": {
+    "examples": 2509,
+    "train": 2007,
+    "test": 502,
+    "class_counts": {
+      "ai_ml": 302,
+      "cleantech": 27,
+      "crypto_web3": 23,
+      "cybersecurity": 92,
+      "devtools": 979,
+      "ecommerce": 42,
+      "edtech": 80,
+      "enterprise_saas": 224,
+      "fintech": 103,
+      "gaming": 79,
+      "hardware_iot": 78,
+      "healthtech": 80,
+      "hr_work": 99,
+      "media_content": 182,
+      "proptech": 22,
+      "social_communication": 97
+    },
+    "dropped_classes": [
+      "food_agri",
+      "logistics",
+      "mobility",
+      "space_defense",
+      "telecom",
+      "travel"
+    ],
+    "min_class_size": 20
+  },
+  "evaluation_note": "Hold-out metrics measure agreement with LLM-assigned (silver) labels, not human ground truth.",
+  "known_limitations": [
+    "Silver labels inherit LLM mistakes and ambiguity between neighbouring classes.",
+    "Training entities come from Hacker News launches (tech-heavy, US-heavy, 2007-present).",
+    "Multi-category products are forced into a single label."
+  ],
+  "classes": [
+    "ai_ml",
+    "cleantech",
+    "crypto_web3",
+    "cybersecurity",
+    "devtools",
+    "ecommerce",
+    "edtech",
+    "enterprise_saas",
+    "fintech",
+    "gaming",
+    "hardware_iot",
+    "healthtech",
+    "hr_work",
+    "media_content",
+    "proptech",
+    "social_communication"
+  ],
+  "class_descriptions": {
+    "ai_ml": "AI & Machine Learning",
+    "cleantech": "CleanTech & Energy",
+    "crypto_web3": "Crypto & Web3",
+    "cybersecurity": "Cybersecurity",
+    "devtools": "Developer Tools & Infrastructure",
+    "ecommerce": "E-commerce & Retail",
+    "edtech": "EdTech",
+    "enterprise_saas": "Enterprise Software & SaaS",
+    "fintech": "FinTech",
+    "gaming": "Gaming",
+    "hardware_iot": "Hardware, Robotics & IoT",
+    "healthtech": "HealthTech & Biotech",
+    "hr_work": "HR & Future of Work",
+    "media_content": "Media & Content",
+    "proptech": "PropTech & Real Estate",
+    "social_communication": "Social & Communication"
+  },
+  "metrics": {
+    "tfidf_lr": {
+      "accuracy": 0.6096,
+      "macro_f1": 0.574,
+      "weighted_f1": 0.6141,
+      "per_class_f1": {
+        "ai_ml": 0.6,
+        "cleantech": 0.667,
+        "crypto_web3": 0.667,
+        "cybersecurity": 0.541,
+        "devtools": 0.725,
+        "ecommerce": 0.308,
+        "edtech": 0.606,
+        "enterprise_saas": 0.391,
+        "fintech": 0.698,
+        "gaming": 0.6,
+        "hardware_iot": 0.48,
+        "healthtech": 0.743,
+        "hr_work": 0.757,
+        "media_content": 0.458,
+        "proptech": 0.667,
+        "social_communication": 0.279
+      },
+      "C": 2.0,
+      "cv_macro_f1_train": 0.5142
+    },
+    "majority_baseline": {
+      "accuracy": 0.3904,
+      "macro_f1": 0.0351
+    },
+    "embedding_lr": {
+      "accuracy": 0.7073,
+      "macro_f1": 0.7038,
+      "weighted_f1": 0.7124,
+      "per_class_f1": {
+        "ai_ml": 0.429,
+        "cleantech": 0.857,
+        "crypto_web3": 0.667,
+        "cybersecurity": 0.471,
+        "devtools": 0.739,
+        "ecommerce": 0.667,
+        "edtech": 0.833,
+        "enterprise_saas": 0.538,
+        "fintech": 0.9,
+        "gaming": 0.667,
+        "hardware_iot": 0.571,
+        "healthtech": 0.917,
+        "hr_work": 0.667,
+        "media_content": 0.833,
+        "proptech": 0.8,
+        "social_communication": 0.706
+      }
+    }
+  }
+}

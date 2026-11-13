@@ -1,40 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investor Report - PunchStart</title>
-    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/report.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Evidence-backed startup analysis report.">
+  <meta name="theme-color" content="#F5D90A">
+  <title>Startup report · StartPunch</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="../assets/css/app.css">
 </head>
 <body>
-    <div class="app-container">
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <a href="../index.html" class="sidebar-logo"><span class="brand-mark"><span><span class="p">P</span><span class="s">S</span></span></span><span class="brand-punch">Punch</span><span class="brand-start">Start</span></a>
-            </div>
-            <nav class="sidebar-nav">
-                <a href="dashboard.html" class="nav-item"><span class="nav-icon">D</span>Dashboard</a>
-                <a href="analyze.html" class="nav-item"><span class="nav-icon">A</span>New Analysis</a>
-                <a href="feed.html" class="nav-item"><span class="nav-icon">F</span>Founder Feed</a>
-                <a href="../index.html" class="nav-item" id="logout-link"><span class="nav-icon">O</span>Logout</a>
-            </nav>
-        </aside>
-
-        <main class="main-content report-page">
-            <div id="report-container">
-                <div class="report-empty-state hidden">
-                    <h2>No startup validations yet</h2>
-                    <p>Ideas deserve evidence. Validate your first startup idea and receive an investor-grade report.</p>
-                    <a class="btn btn-primary" href="analyze.html">Start Analysis</a>
-                </div>
-                <div id="report-content"></div>
-            </div>
-        </main>
-    </div>
-
-    <script src="../assets/js/common.js"></script>
-    <script src="../assets/js/report.js"></script>
+  <div id="app"><div class="page"><div class="skeleton sk-block"></div></div></div>
+  <noscript><p style="padding:24px">StartPunch needs JavaScript enabled.</p></noscript>
+  <script type="module" src="../assets/js/pages/results.js"></script>
 </body>
 </html>
