@@ -38,6 +38,10 @@ export async function api(path, { method = 'GET', body, raw, headers = {}, timeo
   const type = response.headers.get('content-type') || '';
   const data = type.includes('application/json') ? await response.json().catch(() => ({})) : await response.text();
   if (!response.ok) {
+    if ((response.status === 404 || response.status === 405) && !type.includes('application/json')) {
+      // No API behind this deployment yet (e.g. the server is still being configured).
+      throw new ApiError('StartPunch is being set up — accounts and analysis will be available shortly.', 503);
+    }
     const message = (data && data.detail) || `Request failed (${response.status}).`;
     throw new ApiError(typeof message === 'string' ? message : 'Request failed.', response.status, data);
   }
